@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Find your next format. | OceanGate</title>
+    <meta
+      name="description"
+      content="Explore our complete storage catalogue. Filter by family, brand and product type, then compare the details that matter."
+    >
+    <meta name="robots" content="noindex, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Find your next format. | OceanGate">
+    <meta
+      property="og:description"
+      content="Explore our complete storage catalogue. Filter by family, brand and product type, then compare the details that matter."
+    >
+    <meta property="og:url" content="https://example.com/products.html">
+    <meta property="og:image" content="https://example.com/assets/brand/social-neon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Find your next format. | OceanGate">
+    <meta
+      name="twitter:description"
+      content="Explore our complete storage catalogue. Filter by family, brand and product type, then compare the details that matter."
+    >
+    <meta name="twitter:image" content="https://example.com/assets/brand/social-neon.png">
+    <meta name="theme-color" content="#070707">
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-used.css">
+    <script defer="defer" src="assets/vendor/bootstrap.bundle.min.js">
+    </script>
+    <!-- Common styling and one shared catalogue stylesheet. -->
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/components/catalogue.css">
+    <!-- Common behavior and one shared catalogue script. -->
+    <script defer="" src="assets/js/common.js">
+    </script>
+    <script defer="" src="assets/js/components/catalogue.js">
+    </script>
+  </head>
+  <body data-page="products" data-root="./" data-category="" data-brand="">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="demo-strip">
+      A storage catalogue, thoughtfully connected.
+      <span>Educational demo · PKR sample prices</span>
+    </div>
+    <!-- Consistent navigation with clean crawlable links; visitor state is added only on interaction. -->
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a href="index.html" class="brand" aria-label="OceanGate home">
+          <img src="assets/brand/logo-neon.svg" width="240" height="60" alt="OceanGate Limited">
+        </a>
+        <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+          <a href="products.html" aria-current="page">Products</a>
+          <a href="about.html">About us</a>
+          <a href="support.html">Support</a>
+          <a href="where-to-buy.html">Where to buy</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-tools">
+          <a href="compare.html" class="compare-nav" aria-label="Compare products">
+            ⇄
+            <span data-compare-count="">0</span>
+          </a>
+          <a href="cart.html" class="cart-link">
+            Bag
+            <span class="count" data-cart-count="">0</span>
+          </a>
+          <button
+            id="menu-toggle"
+            class="menu-toggle"
+            aria-controls="site-nav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <div class="container">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Find your next format.</span>
+        </nav>
+        <div id="load-state" role="status" aria-live="polite">Loading catalogue controls…</div>
+      </div>
+      <div class="container">
+        <header class="page-intro">
+          <div class="eyebrow">The collection</div>
+          <h1>Find your next format.</h1>
+          <p>
+            Explore our complete storage catalogue. Filter by family, brand and product type, then compare
+            the details that matter.
+          </p>
+        </header>
+      </div>
+      <section class="container">
+        <div class="catalogue-layout">
+          <form id="catalogue-controls" class="filters" role="search">
+            <h2>Refine your search</h2>
+            <div class="field">
+              <label for="search">Search catalogue</label>
+              <input id="search" type="search" placeholder="Name, model, format…">
+            </div>
+            <div class="field">
+              <label for="category-filter">Storage family</label>
+              <select id="category-filter">
+                <option value="">All families</option>
+                <option value="floppy-disks">Floppy disks</option>
+                <option value="compact-disc-media">Compact disc media</option>
+                <option value="cd-rom-drives">CD-ROM drives</option>
+                <option value="optical-writers">Optical writers</option>
+                <option value="dvd-media">DVD media</option>
+                <option value="data-cartridges">Data cartridges</option>
+                <option value="ait-tapes">AIT tapes</option>
+                <option value="data-centre-tapes">Data centre tapes</option>
+                <option value="disc-organisers">Disc organisers</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="brand-filter">Brand</label>
+              <select id="brand-filter">
+                <option value="">All brands</option>
+                <option value="imation">Imation</option>
+                <option value="sony">Sony</option>
+                <option value="verbatim">Verbatim</option>
+                <option value="tdk">TDK</option>
+                <option value="maxell">Maxell</option>
+                <option value="samsung">Samsung</option>
+                <option value="hp">HP</option>
+                <option value="quantum">Quantum</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="type-filter">Product type</label>
+              <select id="type-filter">
+                <option value="">All types</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="sort">Sort products</label>
+              <select id="sort">
+                <option value="name-asc">Name A–Z</option>
+                <option value="price-asc">Price: low to high</option>
+                <option value="price-desc">Price: high to low</option>
+              </select>
+            </div>
+            <button class="btn btn-outline" id="clear-filters" type="button">Clear filters</button>
+          </form>
+          <div>
+            <h2 class="visually-hidden">Catalogue products</h2>
+            <div class="results-top">
+              <span id="results-count" role="status">132 products in this collection</span>
+              <a href="sitemap.html">Full product directory ↗</a>
+            </div>
+            <div id="product-grid" class="product-grid">
+              <article class="product-card">
+                <a
+                  class="product-image"
+                  href="products/imation-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-001.html"
+                >
+                  <img
+                    src="assets/images/imation-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-001.svg"
+                    alt="Illustration of Imation 3.5-inch 1.44 MB floppy disks 10-pack PC formatted; educational sample, not a manufacturer photograph"
+                    width="600"
+                    height="420"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="product-content">
+                  <div class="product-meta">
+                    <span>Imation</span>
+                    <span>floppy 35</span>
+                  </div>
+                  <h3>
+                    <a href="products/imation-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-001.html">
+                      Imation 3.5-inch 1.44 MB floppy disks 10-pack PC formatted
+                    </a>
+                  </h3>
+                  <ul class="product-features">
+                    <li>Format: 3.5-inch floppy</li>
+                    <li>Capacity per disk: 1.44 MB</li>
+                  </ul>
+                  <div class="product-price">
+                    <small>Demo price · PKR</small>
+                    1,150
+                  </div>
+                  <div class="product-actions">
+                    <a href="products/imation-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-001.html">
+                      View details ↗
+                    </a>
+                    <button type="button" data-action="cart-add" data-id="OG-001">Add to cart</button>
+                    <button type="button" data-action="compare-add" data-id="OG-001">+ Compare</button>
+                    <a class="download-link" href="downloads/specifications/OG-001.docx" download="">
+                      ↓ Specifications (.docx)
+                    </a>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card">
+                <a
+                  class="product-image"
+                  href="products/imation-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-002.html"
+                >
+                  <img
+                    src="assets/images/imation-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-002.svg"
+                    alt="Illustration of Imation 3.5-inch 1.44 MB floppy disks 20-pack Unformatted; educational sample, not a manufacturer photograph"
+                    width="600"
+                    height="420"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="product-content">
+                  <div class="product-meta">
+                    <span>Imation</span>
+                    <span>floppy 35</span>
+                  </div>
+                  <h3>
+                    <a href="products/imation-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-002.html">
+                      Imation 3.5-inch 1.44 MB floppy disks 20-pack Unformatted
+                    </a>
+                  </h3>
+                  <ul class="product-features">
+                    <li>Format: 3.5-inch floppy</li>
+                    <li>Capacity per disk: 1.44 MB</li>
+                  </ul>
+                  <div class="product-price">
+                    <small>Demo price · PKR</small>
+                    1,470
+                  </div>
+                  <div class="product-actions">
+                    <a href="products/imation-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-002.html">
+                      View details ↗
+                    </a>
+                    <button type="button" data-action="cart-add" data-id="OG-002">Add to cart</button>
+                    <button type="button" data-action="compare-add" data-id="OG-002">+ Compare</button>
+                    <a class="download-link" href="downloads/specifications/OG-002.docx" download="">
+                      ↓ Specifications (.docx)
+                    </a>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card">
+                <a
+                  class="product-image"
+                  href="products/imation-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-003.html"
+                >
+                  <img
+                    src="assets/images/imation-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-003.svg"
+                    alt="Illustration of Imation 3.5-inch 720 kB floppy disks 10-pack Unformatted; educational sample, not a manufacturer photograph"
+                    width="600"
+                    height="420"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="product-content">
+                  <div class="product-meta">
+                    <span>Imation</span>
+                    <span>floppy 35</span>
+                  </div>
+                  <h3>
+                    <a href="products/imation-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-003.html">
+                      Imation 3.5-inch 720 kB floppy disks 10-pack Unformatted
+                    </a>
+                  </h3>
+                  <ul class="product-features">
+                    <li>Format: 3.5-inch floppy</li>
+                    <li>Capacity per disk: 720 kB</li>
+                  </ul>
+                  <div class="product-price">
+                    <small>Demo price · PKR</small>
+                    1,790
+                  </div>
+                  <div class="product-actions">
+                    <a href="products/imation-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-003.html">
+                      View details ↗
+                    </a>
+                    <button type="button" data-action="cart-add" data-id="OG-003">Add to cart</button>
+                    <button type="button" data-action="compare-add" data-id="OG-003">+ Compare</button>
+                    <a class="download-link" href="downloads/specifications/OG-003.docx" download="">
+                      ↓ Specifications (.docx)
+                    </a>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card">
+                <a
+                  class="product-image"
+                  href="products/sony-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-004.html"
+                >
+                  <img
+                    src="assets/images/sony-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-004.svg"
+                    alt="Illustration of Sony 3.5-inch 1.44 MB floppy disks 10-pack PC formatted; educational sample, not a manufacturer photograph"
+                    width="600"
+                    height="420"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="product-content">
+                  <div class="product-meta">
+                    <span>Sony</span>
+                    <span>floppy 35</span>
+                  </div>
+                  <h3>
+                    <a href="products/sony-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-004.html">
+                      Sony 3.5-inch 1.44 MB floppy disks 10-pack PC formatted
+                    </a>
+                  </h3>
+                  <ul class="product-features">
+                    <li>Format: 3.5-inch floppy</li>
+                    <li>Capacity per disk: 1.44 MB</li>
+                  </ul>
+                  <div class="product-price">
+                    <small>Demo price · PKR</small>
+                    1,240
+                  </div>
+                  <div class="product-actions">
+                    <a href="products/sony-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-004.html">
+                      View details ↗
+                    </a>
+                    <button type="button" data-action="cart-add" data-id="OG-004">Add to cart</button>
+                    <button type="button" data-action="compare-add" data-id="OG-004">+ Compare</button>
+                    <a class="download-link" href="downloads/specifications/OG-004.docx" download="">
+                      ↓ Specifications (.docx)
+                    </a>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card">
+                <a
+                  class="product-image"
+                  href="products/sony-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-005.html"
+                >
+                  <img
+                    src="assets/images/sony-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-005.svg"
+                    alt="Illustration of Sony 3.5-inch 1.44 MB floppy disks 20-pack Unformatted; educational sample, not a manufacturer photograph"
+                    width="600"
+                    height="420"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="product-content">
+                  <div class="product-meta">
+                    <span>Sony</span>
+                    <span>floppy 35</span>
+                  </div>
+                  <h3>
+                    <a href="products/sony-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-005.html">
+                      Sony 3.5-inch 1.44 MB floppy disks 20-pack Unformatted
+                    </a>
+                  </h3>
+                  <ul class="product-features">
+                    <li>Format: 3.5-inch floppy</li>
+                    <li>Capacity per disk: 1.44 MB</li>
+                  </ul>
+                  <div class="product-price">
+                    <small>Demo price · PKR</small>
+                    1,560
+                  </div>
+                  <div class="product-actions">
+                    <a href="products/sony-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-005.html">
+                      View details ↗
+                    </a>
+                    <button type="button" data-action="cart-add" data-id="OG-005">Add to cart</button>
+                    <button type="button" data-action="compare-add" data-id="OG-005">+ Compare</button>
+                    <a class="download-link" href="downloads/specifications/OG-005.docx" download="">
+                      ↓ Specifications (.docx)
+                    </a>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card">
+                <a
+                  class="product-image"
+                  href="products/sony-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-006.html"
+                >
+                  <img
+                    src="assets/images/sony-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-006.svg"
+                    alt="Illustration of Sony 3.5-inch 720 kB floppy disks 10-pack Unformatted; educational sample, not a manufacturer photograph"
+                    width="600"
+                    height="420"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="product-content">
+                  <div class="product-meta">
+                    <span>Sony</span>
+                    <span>floppy 35</span>
+                  </div>
+                  <h3>
+                    <a href="products/sony-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-006.html">
+                      Sony 3.5-inch 720 kB floppy disks 10-pack Unformatted
+                    </a>
+                  </h3>
+                  <ul class="product-features">
+                    <li>Format: 3.5-inch floppy</li>
+                    <li>Capacity per disk: 720 kB</li>
+                  </ul>
+                  <div class="product-price">
+                    <small>Demo price · PKR</small>
+                    1,880
+                  </div>
+                  <div class="product-actions">
+                    <a href="products/sony-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-006.html">
+                      View details ↗
+                    </a>
+                    <button type="button" data-action="cart-add" data-id="OG-006">Add to cart</button>
+                    <button type="button" data-action="compare-add" data-id="OG-006">+ Compare</button>
+                    <a class="download-link" href="downloads/specifications/OG-006.docx" download="">
+                      ↓ Specifications (.docx)
+                    </a>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card">
+                <a
+                  class="product-image"
+                  href="products/tdk-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-007.html"
+                >
+                  <img
+                    src="assets/images/tdk-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-007.svg"
+                    alt="Illustration of TDK 3.5-inch 1.44 MB floppy disks 10-pack PC formatted; educational sample, not a manufacturer photograph"
+                    width="600"
+                    height="420"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="product-content">
+                  <div class="product-meta">
+                    <span>TDK</span>
+                    <span>floppy 35</span>
+                  </div>
+                  <h3>
+                    <a href="products/tdk-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-007.html">
+                      TDK 3.5-inch 1.44 MB floppy disks 10-pack PC formatted
+                    </a>
+                  </h3>
+                  <ul class="product-features">
+                    <li>Format: 3.5-inch floppy</li>
+                    <li>Capacity per disk: 1.44 MB</li>
+                  </ul>
+                  <div class="product-price">
+                    <small>Demo price · PKR</small>
+                    1,330
+                  </div>
+                  <div class="product-actions">
+                    <a href="products/tdk-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-007.html">
+                      View details ↗
+                    </a>
+                    <button type="button" data-action="cart-add" data-id="OG-007">Add to cart</button>
+                    <button type="button" data-action="compare-add" data-id="OG-007">+ Compare</button>
+                    <a class="download-link" href="downloads/specifications/OG-007.docx" download="">
+                      ↓ Specifications (.docx)
+                    </a>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card">
+                <a
+                  class="product-image"
+                  href="products/tdk-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-008.html"
+                >
+                  <img
+                    src="assets/images/tdk-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-008.svg"
+                    alt="Illustration of TDK 3.5-inch 1.44 MB floppy disks 20-pack Unformatted; educational sample, not a manufacturer photograph"
+                    width="600"
+                    height="420"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="product-content">
+                  <div class="product-meta">
+                    <span>TDK</span>
+                    <span>floppy 35</span>
+                  </div>
+                  <h3>
+                    <a href="products/tdk-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-008.html">
+                      TDK 3.5-inch 1.44 MB floppy disks 20-pack Unformatted
+                    </a>
+                  </h3>
+                  <ul class="product-features">
+                    <li>Format: 3.5-inch floppy</li>
+                    <li>Capacity per disk: 1.44 MB</li>
+                  </ul>
+                  <div class="product-price">
+                    <small>Demo price · PKR</small>
+                    1,650
+                  </div>
+                  <div class="product-actions">
+                    <a href="products/tdk-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-008.html">
+                      View details ↗
+                    </a>
+                    <button type="button" data-action="cart-add" data-id="OG-008">Add to cart</button>
+                    <button type="button" data-action="compare-add" data-id="OG-008">+ Compare</button>
+                    <a class="download-link" href="downloads/specifications/OG-008.docx" download="">
+                      ↓ Specifications (.docx)
+                    </a>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card">
+                <a
+                  class="product-image"
+                  href="products/tdk-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-009.html"
+                >
+                  <img
+                    src="assets/images/tdk-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-009.svg"
+                    alt="Illustration of TDK 3.5-inch 720 kB floppy disks 10-pack Unformatted; educational sample, not a manufacturer photograph"
+                    width="600"
+                    height="420"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="product-content">
+                  <div class="product-meta">
+                    <span>TDK</span>
+                    <span>floppy 35</span>
+                  </div>
+                  <h3>
+                    <a href="products/tdk-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-009.html">
+                      TDK 3.5-inch 720 kB floppy disks 10-pack Unformatted
+                    </a>
+                  </h3>
+                  <ul class="product-features">
+                    <li>Format: 3.5-inch floppy</li>
+                    <li>Capacity per disk: 720 kB</li>
+                  </ul>
+                  <div class="product-price">
+                    <small>Demo price · PKR</small>
+                    1,970
+                  </div>
+                  <div class="product-actions">
+                    <a href="products/tdk-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-009.html">
+                      View details ↗
+                    </a>
+                    <button type="button" data-action="cart-add" data-id="OG-009">Add to cart</button>
+                    <button type="button" data-action="compare-add" data-id="OG-009">+ Compare</button>
+                    <a class="download-link" href="downloads/specifications/OG-009.docx" download="">
+                      ↓ Specifications (.docx)
+                    </a>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card">
+                <a
+                  class="product-image"
+                  href="products/maxell-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-010.html"
+                >
+                  <img
+                    src="assets/images/maxell-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-010.svg"
+                    alt="Illustration of Maxell 3.5-inch 1.44 MB floppy disks 10-pack PC formatted; educational sample, not a manufacturer photograph"
+                    width="600"
+                    height="420"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="product-content">
+                  <div class="product-meta">
+                    <span>Maxell</span>
+                    <span>floppy 35</span>
+                  </div>
+                  <h3>
+                    <a href="products/maxell-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-010.html">
+                      Maxell 3.5-inch 1.44 MB floppy disks 10-pack PC formatted
+                    </a>
+                  </h3>
+                  <ul class="product-features">
+                    <li>Format: 3.5-inch floppy</li>
+                    <li>Capacity per disk: 1.44 MB</li>
+                  </ul>
+                  <div class="product-price">
+                    <small>Demo price · PKR</small>
+                    1,420
+                  </div>
+                  <div class="product-actions">
+                    <a href="products/maxell-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-010.html">
+                      View details ↗
+                    </a>
+                    <button type="button" data-action="cart-add" data-id="OG-010">Add to cart</button>
+                    <button type="button" data-action="compare-add" data-id="OG-010">+ Compare</button>
+                    <a class="download-link" href="downloads/specifications/OG-010.docx" download="">
+                      ↓ Specifications (.docx)
+                    </a>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card">
+                <a
+                  class="product-image"
+                  href="products/maxell-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-011.html"
+                >
+                  <img
+                    src="assets/images/maxell-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-011.svg"
+                    alt="Illustration of Maxell 3.5-inch 1.44 MB floppy disks 20-pack Unformatted; educational sample, not a manufacturer photograph"
+                    width="600"
+                    height="420"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="product-content">
+                  <div class="product-meta">
+                    <span>Maxell</span>
+                    <span>floppy 35</span>
+                  </div>
+                  <h3>
+                    <a href="products/maxell-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-011.html">
+                      Maxell 3.5-inch 1.44 MB floppy disks 20-pack Unformatted
+                    </a>
+                  </h3>
+                  <ul class="product-features">
+                    <li>Format: 3.5-inch floppy</li>
+                    <li>Capacity per disk: 1.44 MB</li>
+                  </ul>
+                  <div class="product-price">
+                    <small>Demo price · PKR</small>
+                    1,740
+                  </div>
+                  <div class="product-actions">
+                    <a href="products/maxell-3-5-inch-1-44-mb-floppy-disks-20-pack-unformatted-og-011.html">
+                      View details ↗
+                    </a>
+                    <button type="button" data-action="cart-add" data-id="OG-011">Add to cart</button>
+                    <button type="button" data-action="compare-add" data-id="OG-011">+ Compare</button>
+                    <a class="download-link" href="downloads/specifications/OG-011.docx" download="">
+                      ↓ Specifications (.docx)
+                    </a>
+                  </div>
+                </div>
+              </article>
+              <article class="product-card">
+                <a
+                  class="product-image"
+                  href="products/maxell-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-012.html"
+                >
+                  <img
+                    src="assets/images/maxell-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-012.svg"
+                    alt="Illustration of Maxell 3.5-inch 720 kB floppy disks 10-pack Unformatted; educational sample, not a manufacturer photograph"
+                    width="600"
+                    height="420"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="product-content">
+                  <div class="product-meta">
+                    <span>Maxell</span>
+                    <span>floppy 35</span>
+                  </div>
+                  <h3>
+                    <a href="products/maxell-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-012.html">
+                      Maxell 3.5-inch 720 kB floppy disks 10-pack Unformatted
+                    </a>
+                  </h3>
+                  <ul class="product-features">
+                    <li>Format: 3.5-inch floppy</li>
+                    <li>Capacity per disk: 720 kB</li>
+                  </ul>
+                  <div class="product-price">
+                    <small>Demo price · PKR</small>
+                    2,060
+                  </div>
+                  <div class="product-actions">
+                    <a href="products/maxell-3-5-inch-720-kb-floppy-disks-10-pack-unformatted-og-012.html">
+                      View details ↗
+                    </a>
+                    <button type="button" data-action="cart-add" data-id="OG-012">Add to cart</button>
+                    <button type="button" data-action="compare-add" data-id="OG-012">+ Compare</button>
+                    <a class="download-link" href="downloads/specifications/OG-012.docx" download="">
+                      ↓ Specifications (.docx)
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <nav id="pagination" aria-label="Product pagination"></nav>
+            <p class="sample-label">
+              Educational sample catalogue. All prices, models and specifications are illustrative.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Supporting navigation and transparent educational context. -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html">
+              <img src="assets/brand/logo-neon.svg" width="240" height="60" alt="OceanGate Limited">
+            </a>
+            <p>Storage with a purpose. Explore the right media for the things worth keeping.</p>
+          </div>
+          <div class="footer-col">
+            <h3>Explore</h3>
+            <a href="products.html">All products</a>
+            <a href="compare.html">Compare products</a>
+            <a href="sitemap.html">Product directory</a>
+            <a href="about.html">Our story</a>
+          </div>
+          <div class="footer-col">
+            <h3>Here to help</h3>
+            <a href="support.html">Support centres</a>
+            <a href="where-to-buy.html">Where to buy</a>
+            <a href="contact.html">Get in touch</a>
+            <a href="cart.html">Your demo bag</a>
+          </div>
+          <div class="footer-col">
+            <h3>Make an informed choice</h3>
+            <p class="footer-note">Check formats. Compare specifications. Find a compatible fit.</p>
+            <a href="support.html#compatibility">Compatibility guide ↗</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>OceanGate Limited · Educational eProject</span>
+          <span>Illustrative products &amp; sample listings. No orders or payments.</span>
+          <span>BLACK / NEON EDITION</span>
+        </div>
+      </div>
+    </footer>
+    <div id="site-status" class="status-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <noscript>
+      <div class="notice container">
+        Product information and downloads are available. Enable JavaScript for search, comparison and the
+        demo bag.
+      </div>
+    </noscript>
+  </body>
+</html>

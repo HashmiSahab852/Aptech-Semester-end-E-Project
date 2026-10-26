@@ -1,0 +1,46 @@
+/* About page: company story and information cards. */
+
+.prose {
+  max-width: 800px;
+}
+
+.prose h2 {
+  font-size: 1.8rem;
+  margin-top: 40px;
+}
+
+.prose p {
+  font-size: .95rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.info-card {
+  padding: 28px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.info-card p {
+  font-size: .84rem;
+}
+
+.info-card a {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 800px) {
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}

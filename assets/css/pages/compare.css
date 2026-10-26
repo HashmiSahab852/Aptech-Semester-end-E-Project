@@ -1,0 +1,159 @@
+/* Comparison page: selectors, compatible product slots and difference table. */
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .82rem;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.compare-slots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.compare-slot {
+  padding: 25px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  min-width: 0;
+}
+
+.compare-slot img {
+  width: 220px;
+  height: 150px;
+  object-fit: contain;
+  display: block;
+  margin: 16px auto;
+}
+
+.comparison-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.comparison-table {
+  min-width: 550px;
+}
+
+.comparison-table th {
+  background: var(--panel);
+  width: 28%;
+}
+
+.comparison-table .different,
+.comparison-table tr.difference {
+  background: var(--panel-2);
+}
+
+.compare-controls {
+  margin: 20px 0;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 800px) {
+  .compare-slot {
+    padding: 15px;
+  }
+
+  .compare-slot h2,
+  .compare-slot h3 {
+    font-size: 1.1rem;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 13px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .compare-slots {
+    gap: 10px;
+  }
+
+  .compare-slot {
+    padding: 12px;
+  }
+
+  .compare-slot select {
+    font-size: .68rem;
+    padding: 9px 5px;
+  }
+
+  .compare-slot .btn {
+    padding: 7px;
+    font-size: .67rem;
+  }
+
+  .compare-slot img {
+    height: 100px;
+  }
+}
+
+.comparison-table caption {
+  color: var(--muted);
+  padding: 16px 0;
+}
+
+.compare-slot h2 {
+  font-size: 1.35rem;
+  line-height: 1.4;
+  letter-spacing: -.025em;
+}
+
+.comparison-table .is-different {
+  background: var(--panel-2);
+}
+
+.comparison-options {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin: 28px 0 18px;
+}
+
+.comparison-options label {
+  display: flex;
+  align-items: center;
+}
+
+.compare-slot .form-select {
+  background-color: var(--bg);
+  color: var(--text);
+  border-color: var(--line);
+  font-size: .78rem;
+}
+
+.compare-slot .text-action {
+  margin-left: 18px;
+}
+
+.slot-empty {
+  padding: 35px 0;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+@media (max-width: 600px) {
+  .comparison-options {
+    gap: 10px;
+  }
+}
+
+/* Preserve the transparent Bootstrap header over highlighted comparison rows. */
+.comparison-table.table th {
+  background: transparent;
+}

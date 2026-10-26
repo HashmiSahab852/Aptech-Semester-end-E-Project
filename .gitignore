@@ -1,0 +1,5 @@
+tools/qa/node_modules/
+tools/__pycache__/
+documentation/qa/production-test/
+documentation/qa/spec-render/
+*.log

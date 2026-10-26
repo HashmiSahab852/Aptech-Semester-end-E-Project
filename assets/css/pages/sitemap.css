@@ -1,0 +1,30 @@
+/* Product directory: category headings and complete product links. */
+
+.directory {
+  columns: 3;
+  column-gap: 40px;
+}
+
+.directory a {
+  display: block;
+  padding: 9px 0;
+  font-size: .8rem;
+  break-inside: avoid;
+}
+
+.directory h2 {
+  font-size: 1.4rem;
+  break-after: avoid;
+}
+
+@media (max-width: 800px) {
+  .directory {
+    columns: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .directory {
+    columns: 1;
+  }
+}

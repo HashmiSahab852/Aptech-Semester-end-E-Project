@@ -1,0 +1,30 @@
+/* Contact page: company details and configured map or placeholder. */
+
+.map-placeholder {
+  min-height: 280px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 35px;
+  border: 1px solid var(--line);
+  background: repeating-linear-gradient(45deg, var(--panel), var(--panel) 20px, var(--bg) 20px, var(--bg) 21px);
+}
+
+#map-area iframe {
+  width: 100%;
+  height: 310px;
+  border: 0;
+}
+
+#contact-info p {
+  overflow-wrap: anywhere;
+}
+
+.map-symbol {
+  font-size: 3rem;
+  color: var(--accent);
+}
+
+.map-placeholder h2 {
+  font-size: 1.6rem;
+}

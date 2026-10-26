@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XSD 1.0: catalogue structure, numeric bounds, minimum inventory and references. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:simpleType name="nonEmpty"><xs:restriction base="xs:string"><xs:minLength value="1"/></xs:restriction></xs:simpleType>
+  <xs:simpleType name="blank"><xs:restriction base="xs:string"><xs:length value="0"/></xs:restriction></xs:simpleType>
+  <xs:simpleType name="latitude"><xs:restriction base="xs:decimal"><xs:minInclusive value="-90"/><xs:maxInclusive value="90"/></xs:restriction></xs:simpleType>
+  <xs:simpleType name="longitude"><xs:restriction base="xs:decimal"><xs:minInclusive value="-180"/><xs:maxInclusive value="180"/></xs:restriction></xs:simpleType>
+  <xs:simpleType name="optionalLatitude"><xs:union memberTypes="blank latitude"/></xs:simpleType>
+  <xs:simpleType name="optionalLongitude"><xs:union memberTypes="blank longitude"/></xs:simpleType>
+  <xs:simpleType name="zoom"><xs:restriction base="xs:integer"><xs:minInclusive value="1"/><xs:maxInclusive value="20"/></xs:restriction></xs:simpleType>
+  <xs:simpleType name="price"><xs:restriction base="xs:decimal"><xs:minExclusive value="0"/><xs:maxInclusive value="100000000"/><xs:fractionDigits value="2"/></xs:restriction></xs:simpleType>
+  <xs:simpleType name="currency"><xs:restriction base="xs:string"><xs:pattern value="[A-Z]{3}"/></xs:restriction></xs:simpleType>
+  <xs:simpleType name="slug"><xs:restriction base="xs:string"><xs:pattern value="[a-z0-9]+(-[a-z0-9]+)*"/></xs:restriction></xs:simpleType>
+  <xs:simpleType name="productId"><xs:restriction base="xs:NCName"><xs:pattern value="OG-[0-9]{3,6}"/></xs:restriction></xs:simpleType>
+  <xs:simpleType name="comparisonType"><xs:restriction base="xs:string">
+    <xs:enumeration value="floppy-35"/><xs:enumeration value="cd-r"/><xs:enumeration value="cd-rw"/><xs:enumeration value="cd-rom-drive"/>
+    <xs:enumeration value="cd-writer"/><xs:enumeration value="dvd-writer"/><xs:enumeration value="dvd-r"/><xs:enumeration value="dvd-rw"/><xs:enumeration value="dvd-plus-r"/>
+    <xs:enumeration value="dds-tape"/><xs:enumeration value="eight-mm-tape"/><xs:enumeration value="ait-tape"/><xs:enumeration value="lto-tape"/><xs:enumeration value="disc-organiser"/>
+  </xs:restriction></xs:simpleType>
+  <xs:simpleType name="localImage"><xs:restriction base="xs:string"><xs:pattern value="assets/images/[a-z0-9-]+\.(svg|png|webp|jpg)"/></xs:restriction></xs:simpleType>
+  <xs:simpleType name="localDownload"><xs:restriction base="xs:string"><xs:pattern value="downloads/specifications/OG-[0-9]{3,6}\.docx"/></xs:restriction></xs:simpleType>
+  <xs:complexType name="attributedText"><xs:simpleContent><xs:extension base="nonEmpty"><xs:attribute name="author" type="nonEmpty" use="required"/></xs:extension></xs:simpleContent></xs:complexType>
+  <xs:complexType name="listing"><xs:sequence>
+    <xs:element name="name" type="nonEmpty"/><xs:element name="city" type="nonEmpty"/><xs:element name="address" type="nonEmpty"/>
+    <xs:element name="email" type="nonEmpty"/><xs:element name="phone" type="nonEmpty"/><xs:element name="hours" type="nonEmpty"/>
+  </xs:sequence><xs:attribute name="id" type="xs:NCName" use="required"/></xs:complexType>
+  <xs:element name="oceanGate"><xs:complexType><xs:sequence>
+    <xs:element name="config"><xs:complexType><xs:sequence>
+      <xs:element name="companyName" type="nonEmpty"/><xs:element name="currency" type="currency"/>
+      <xs:element name="address" type="nonEmpty"/><xs:element name="email" type="nonEmpty"/><xs:element name="phone" type="nonEmpty"/>
+      <xs:element name="locationLabel" type="nonEmpty"/><xs:element name="latitude" type="optionalLatitude"/><xs:element name="longitude" type="optionalLongitude"/><xs:element name="mapZoom" type="zoom"/>
+      <xs:element name="seoMode"><xs:simpleType><xs:restriction base="xs:string"><xs:enumeration value="preview"/><xs:enumeration value="production"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="siteBaseUrl" type="xs:anyURI"/><xs:element name="demoNote" type="nonEmpty"/>
+    </xs:sequence></xs:complexType></xs:element>
+    <xs:element name="brands"><xs:complexType><xs:sequence><xs:element name="brand" minOccurs="6" maxOccurs="unbounded"><xs:complexType><xs:sequence><xs:element name="name" type="nonEmpty"/></xs:sequence><xs:attribute name="id" type="xs:NCName" use="required"/></xs:complexType></xs:element></xs:sequence></xs:complexType></xs:element>
+    <xs:element name="categories"><xs:complexType><xs:sequence><xs:element name="category" maxOccurs="unbounded"><xs:complexType><xs:sequence><xs:element name="name" type="nonEmpty"/><xs:element name="description" type="nonEmpty"/></xs:sequence><xs:attribute name="id" type="slug" use="required"/></xs:complexType></xs:element></xs:sequence></xs:complexType></xs:element>
+    <xs:element name="products"><xs:complexType><xs:sequence><xs:element name="product" minOccurs="120" maxOccurs="unbounded"><xs:complexType><xs:sequence>
+      <xs:element name="name" type="nonEmpty"/><xs:element name="model" type="nonEmpty"/><xs:element name="subcategory" type="nonEmpty"/>
+      <xs:element name="description" type="nonEmpty"/><xs:element name="price" type="price"/><xs:element name="image" type="localImage"/>
+      <xs:element name="imageAlt" type="nonEmpty"/><xs:element name="download" type="localDownload"/>
+      <xs:element name="features"><xs:complexType><xs:sequence><xs:element name="feature" type="nonEmpty" minOccurs="2" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+      <xs:element name="specifications"><xs:complexType><xs:sequence><xs:element name="spec" minOccurs="3" maxOccurs="unbounded"><xs:complexType><xs:simpleContent><xs:extension base="nonEmpty"><xs:attribute name="name" type="nonEmpty" use="required"/></xs:extension></xs:simpleContent></xs:complexType></xs:element></xs:sequence></xs:complexType></xs:element>
+      <xs:element name="compatibility" type="nonEmpty"/><xs:element name="useCases"><xs:complexType><xs:sequence><xs:element name="useCase" type="nonEmpty" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+      <xs:element name="reviews"><xs:complexType><xs:sequence><xs:element name="review" type="attributedText" minOccurs="0" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+    </xs:sequence><xs:attribute name="id" type="productId" use="required"/><xs:attribute name="brand" type="xs:NCName" use="required"/><xs:attribute name="category" type="slug" use="required"/><xs:attribute name="comparisonType" type="comparisonType" use="required"/><xs:attribute name="slug" type="slug" use="required"/><xs:attribute name="featured" type="xs:boolean" use="required"/></xs:complexType>
+    <xs:unique name="specName"><xs:selector xpath="specifications/spec"/><xs:field xpath="@name"/></xs:unique>
+    </xs:element></xs:sequence></xs:complexType></xs:element>
+    <xs:element name="supportCentres"><xs:complexType><xs:sequence><xs:element name="centre" type="listing" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+    <xs:element name="distributors"><xs:complexType><xs:sequence><xs:element name="distributor" type="listing" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+    <xs:element name="testimonials"><xs:complexType><xs:sequence><xs:element name="testimonial" type="attributedText" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+  </xs:sequence></xs:complexType>
+  <xs:key name="brandKey"><xs:selector xpath="brands/brand"/><xs:field xpath="@id"/></xs:key>
+  <xs:key name="categoryKey"><xs:selector xpath="categories/category"/><xs:field xpath="@id"/></xs:key>
+  <xs:key name="productKey"><xs:selector xpath="products/product"/><xs:field xpath="@id"/></xs:key>
+  <xs:unique name="productSlug"><xs:selector xpath="products/product"/><xs:field xpath="@slug"/></xs:unique>
+  <xs:unique name="productModel"><xs:selector xpath="products/product"/><xs:field xpath="model"/></xs:unique>
+  <xs:unique name="supportId"><xs:selector xpath="supportCentres/centre"/><xs:field xpath="@id"/></xs:unique>
+  <xs:unique name="distributorId"><xs:selector xpath="distributors/distributor"/><xs:field xpath="@id"/></xs:unique>
+  <xs:keyref name="productBrand" refer="brandKey"><xs:selector xpath="products/product"/><xs:field xpath="@brand"/></xs:keyref>
+  <xs:keyref name="productCategory" refer="categoryKey"><xs:selector xpath="products/product"/><xs:field xpath="@category"/></xs:keyref>
+  </xs:element>
+</xs:schema>

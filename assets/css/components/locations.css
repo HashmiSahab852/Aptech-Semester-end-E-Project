@@ -1,0 +1,45 @@
+/* Shared location directory: support centres and distributor listings. */
+
+.location-controls {
+  display: flex;
+  gap: 20px;
+  max-width: 650px;
+  margin-bottom: 28px;
+}
+
+.location-controls > .field {
+  flex: 1;
+}
+
+#locations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+#locations-grid article {
+  border: 1px solid var(--line);
+  padding: 25px;
+  background: var(--panel);
+}
+
+#locations-grid p {
+  font-size: .82rem;
+}
+
+@media (max-width: 800px) {
+  #locations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  #locations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .location-controls {
+    flex-direction: column;
+    gap: 0;
+  }
+}

@@ -1,0 +1,31 @@
+/* Support page: location directory and compatibility FAQ accordion. */
+
+@import url("../components/locations.css");
+
+.accordion-item {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.accordion-button {
+  background: var(--panel);
+  color: var(--text);
+  font-size: .9rem;
+  padding: 23px;
+}
+
+.accordion-button:not(.collapsed) {
+  background: var(--panel-2);
+  color: var(--accent);
+  box-shadow: none;
+}
+
+.accordion-button::after {
+  filter: invert(1);
+}
+
+.accordion-body {
+  color: var(--muted);
+  font-size: .86rem;
+}

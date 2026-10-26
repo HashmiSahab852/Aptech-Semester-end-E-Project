@@ -1,0 +1,132 @@
+/* Shared product-detail layout: artwork, specifications and supporting sections.
+   Linked directly by every product page and the product lookup page. */
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+}
+
+.detail-image {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  align-self: start;
+}
+
+.detail-image img {
+  width: 100%;
+  object-fit: contain;
+  padding: 28px;
+}
+
+.detail-info h1 {
+  font-size: clamp(2rem, 3.3vw, 3.3rem);
+}
+
+.detail-info .product-price {
+  font-size: 1.8rem;
+  margin: 22px 0;
+}
+
+.detail-info ul {
+  color: var(--muted);
+  font-size: .88rem;
+}
+
+.detail-info .product-actions {
+  margin-bottom: 28px;
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .82rem;
+}
+
+.spec-table th,
+.spec-table td {
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.spec-table th {
+  color: var(--muted);
+  width: 40%;
+  font-weight: 400;
+}
+
+.spec-table tr:nth-child(odd) {
+  background: var(--panel);
+}
+
+@media (max-width: 800px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .detail-image {
+    max-width: 520px;
+  }
+}
+
+.detail-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 25px 0;
+}
+
+.detail-sections {
+  margin-top: 45px;
+}
+
+.detail-sections h2 {
+  font-size: 1.8rem;
+  margin-bottom: 23px;
+}
+
+.detail-sections h3 {
+  margin-top: 25px;
+}
+
+.detail-sections ul,
+.sample-review {
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+.detail-info .product-price {
+  font-size: 1.4rem;
+}
+
+.image-caption {
+  font-size: .73rem;
+  color: var(--muted);
+  margin-top: 18px;
+}
+
+.image-caption {
+  text-align: center;
+}
+
+.detail-grid .lead {
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .detail-actions .btn {
+    font-size: .74rem;
+  }
+
+  .detail-sections {
+    margin-top: 30px;
+  }
+}
+
+/* The JavaScript-enhanced Bootstrap table keeps the original bright labels. */
+.spec-table.table th {
+  color: var(--text);
+}

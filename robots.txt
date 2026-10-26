@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# Preview: every page carries noindex. Template sitemap is not for submission.

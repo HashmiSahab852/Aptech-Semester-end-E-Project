@@ -1,0 +1,66 @@
+/* OceanGate: the final black + cyan identity. */
+body{--bg:#070707;--panel:#111719;--panel-2:#142329;--accent:#04d9ff;--accent-text:#001419;--line:#28383d;--text:#f2fbff;--muted:#a8bbc0;--radius:2px}
+.hero::before{content:'';position:absolute;right:0;top:0;width:52%;height:100%;background-image:linear-gradient(#04d9ff07 1px,transparent 1px),linear-gradient(90deg,#04d9ff07 1px,transparent 1px);background-size:48px 48px;pointer-events:none;mask-image:linear-gradient(to left,#000,transparent)}
+.hero h1{font-weight:800;letter-spacing:-.065em}
+.hero h1 em{font-style:normal;color:var(--accent);text-shadow:0 0 36px #04d9ff14}
+.hero-art{transform:rotate(-5deg)}
+.hero-art .art-label,.hero-art .art-badge{transform:rotate(5deg)}
+.hero-art>img{filter:drop-shadow(0 25px 35px #04d9ff10)}
+.hero-copy{position:relative;z-index:1}
+.section-number{font:.72rem 'Courier New',monospace;color:var(--muted);margin-right:10px}
+.category-card:hover{background:#122126}
+.product-card .product-meta{font-family:'Courier New',monospace}
+.footer-brand::after{content:'KEEP WHAT MATTERS.';display:block;color:var(--accent);font:.7rem 'Courier New',monospace;letter-spacing:.15em;margin-top:25px}
+.page-intro{border-left:3px solid var(--accent);padding-left:25px}
+.product-image{background:radial-gradient(ellipse at center,#203139 0%,#0d1518 70%)}
+.product-image::after{color:#a2b8bd}
+.form-select:focus{box-shadow:0 0 0 .2rem #04d9ff20}
+
+/* Small interaction details keep the crisp layout and the same cyan palette. */
+.btn,.cart-link,.product-actions button,.product-actions>a{transition:transform .22s,background .22s,border-color .22s,box-shadow .22s}
+.product-card,.category-card{transition:border-color .24s,background .24s,box-shadow .24s,transform .24s}
+.product-image img,.category-card .arrow{transition:transform .35s cubic-bezier(.2,.75,.25,1)}
+.site-nav a{transition:color .2s}
+.btn-primary:focus-visible,.product-actions button[data-action=cart-add]:focus-visible{box-shadow:0 0 0 5px #04d9ff18}
+@media(hover:hover) and (pointer:fine){
+  .btn-primary:hover,.product-actions button[data-action=cart-add]:hover{box-shadow:0 6px 24px #04d9ff24}
+  .product-card:hover,.category-card:hover{box-shadow:0 12px 32px #0004,0 0 22px #04d9ff0b}
+  .product-card:hover .product-image img{transform:translateY(-3px) scale(1.025)}
+  .category-card:hover .arrow{transform:translateX(4px)}
+  .cart-link:hover{border-color:var(--accent);box-shadow:0 0 18px #04d9ff0d}
+}
+
+/* Finite entrance animations; no background loops or flashing effects. */
+@keyframes og-enter{
+  from{opacity:0;transform:translate3d(0,14px,0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
+}
+@keyframes og-art-enter{
+  from{opacity:0;transform:translate3d(0,18px,0) rotate(-2deg)}
+  to{opacity:1;transform:translate3d(0,0,0) rotate(-5deg)}
+}
+@keyframes og-art-settle{
+  0%,100%{transform:translateY(0)}
+  40%{transform:translateY(-8px)}
+}
+@keyframes og-reveal{
+  from{opacity:.35;transform:translate3d(0,12px,0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
+}
+@media(prefers-reduced-motion:no-preference){
+  .hero-copy>*{animation:og-enter .65s cubic-bezier(.2,.75,.25,1) backwards}
+  .hero-copy>.eyebrow{animation-delay:.04s}
+  .hero-copy>h1{animation-delay:.10s}
+  .hero-copy>p{animation-delay:.16s}
+  .hero-copy>.hero-actions{animation-delay:.22s}
+  .hero-copy>.hero-footnote{animation-delay:.27s}
+  .hero-art{animation:og-art-enter .9s cubic-bezier(.2,.75,.25,1) backwards}
+  .hero-art>img{animation:og-art-settle 3.8s .6s ease-in-out 1 backwards}
+  .page-intro>.eyebrow,.page-intro>h1,.page-intro>p{animation:og-enter .55s cubic-bezier(.2,.75,.25,1) backwards}
+  .page-intro>h1{animation-delay:.06s}
+  .page-intro>p{animation-delay:.12s}
+  .motion-reveal{animation:og-reveal .58s var(--motion-delay,0ms) cubic-bezier(.2,.75,.25,1) backwards}
+}
+@media(prefers-reduced-motion:reduce){
+  .product-card:hover,.product-card:hover .product-image img,.category-card:hover .arrow,.btn:hover{transform:none}
+}

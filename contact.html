@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact OceanGate | Product Enquiries</title>
+    <meta
+      name="description"
+      content="View configurable OceanGate contact information and location. Prepare an email draft for a storage-product enquiry without submitting website data."
+    >
+    <meta name="robots" content="noindex, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact OceanGate | Product Enquiries">
+    <meta
+      property="og:description"
+      content="View configurable OceanGate contact information and location. Prepare an email draft for a storage-product enquiry without submitting website data."
+    >
+    <meta property="og:url" content="https://example.com/contact.html">
+    <meta property="og:image" content="https://example.com/assets/brand/social-neon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact OceanGate | Product Enquiries">
+    <meta
+      name="twitter:description"
+      content="View configurable OceanGate contact information and location. Prepare an email draft for a storage-product enquiry without submitting website data."
+    >
+    <meta name="twitter:image" content="https://example.com/assets/brand/social-neon.png">
+    <meta name="theme-color" content="#070707">
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-used.css">
+    <script defer="defer" src="assets/vendor/bootstrap.bundle.min.js">
+    </script>
+    <!-- Shared styling, followed by this page's own stylesheet. -->
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/pages/contact.css">
+    <!-- Shared behavior, required page component, then this page's own JavaScript. -->
+    <script defer="" src="assets/js/common.js">
+    </script>
+    <script defer="" src="assets/js/pages/contact.js">
+    </script>
+  </head>
+  <body data-page="contact" data-root="./">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="demo-strip">
+      A storage catalogue, thoughtfully connected.
+      <span>Educational demo · PKR sample prices</span>
+    </div>
+    <!-- Consistent navigation with clean crawlable links; visitor state is added only on interaction. -->
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a href="index.html" class="brand" aria-label="OceanGate home">
+          <img src="assets/brand/logo-neon.svg" width="240" height="60" alt="OceanGate Limited">
+        </a>
+        <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+          <a href="products.html">Products</a>
+          <a href="about.html">About us</a>
+          <a href="support.html">Support</a>
+          <a href="where-to-buy.html">Where to buy</a>
+          <a href="contact.html" aria-current="page">Contact</a>
+        </nav>
+        <div class="nav-tools">
+          <a href="compare.html" class="compare-nav" aria-label="Compare products">
+            ⇄
+            <span data-compare-count="">0</span>
+          </a>
+          <a href="cart.html" class="cart-link">
+            Bag
+            <span class="count" data-cart-count="">0</span>
+          </a>
+          <button
+            id="menu-toggle"
+            class="menu-toggle"
+            aria-controls="site-nav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <div class="container">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Contact OceanGate</span>
+        </nav>
+        <div id="load-state" role="status" aria-live="polite">Loading catalogue controls…</div>
+      </div>
+      <div class="container">
+        <header class="page-intro">
+          <div class="eyebrow">Start a conversation</div>
+          <h1>Let’s find the right connection.</h1>
+          <p>
+            Need help with a format or product requirement? Prepare an email draft or find the company
+            contact details.
+          </p>
+        </header>
+      </div>
+      <section class="container">
+        <div class="content-grid">
+          <div>
+            <div id="contact-info">
+              <h2>OceanGate Limited</h2>
+              <p>Company address to be configured</p>
+              <p>Phone to be configured</p>
+              <a href="mailto:hello@oceangate.example">hello@oceangate.example</a>
+            </div>
+            <div id="map-area" class="detail-section">
+              <div class="map-placeholder">
+                <h3>Location to be configured</h3>
+                <p>The company location has not been set.</p>
+              </div>
+            </div>
+          </div>
+          <form id="contact-form" class="panel">
+            <h2>Open an email draft.</h2>
+            <p>
+              Your mail app opens a draft for you to review and send. This website does not send or save
+              messages.
+            </p>
+            <div class="field">
+              <label for="contact-name">Your name</label>
+              <input id="contact-name" name="name" required="" maxlength="100" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="contact-email">Email address</label>
+              <input id="contact-email" name="email" type="email" required="" maxlength="150" autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="contact-subject">Subject</label>
+              <input id="contact-subject" name="subject" required="" maxlength="150">
+            </div>
+            <div class="field">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" required="" maxlength="2000"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Open Email Draft ↗</button>
+            <p class="sample-label">The example recipient must be replaced before sending a real enquiry.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+    <!-- Supporting navigation and transparent educational context. -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html">
+              <img src="assets/brand/logo-neon.svg" width="240" height="60" alt="OceanGate Limited">
+            </a>
+            <p>Storage with a purpose. Explore the right media for the things worth keeping.</p>
+          </div>
+          <div class="footer-col">
+            <h3>Explore</h3>
+            <a href="products.html">All products</a>
+            <a href="compare.html">Compare products</a>
+            <a href="sitemap.html">Product directory</a>
+            <a href="about.html">Our story</a>
+          </div>
+          <div class="footer-col">
+            <h3>Here to help</h3>
+            <a href="support.html">Support centres</a>
+            <a href="where-to-buy.html">Where to buy</a>
+            <a href="contact.html">Get in touch</a>
+            <a href="cart.html">Your demo bag</a>
+          </div>
+          <div class="footer-col">
+            <h3>Make an informed choice</h3>
+            <p class="footer-note">Check formats. Compare specifications. Find a compatible fit.</p>
+            <a href="support.html#compatibility">Compatibility guide ↗</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>OceanGate Limited · Educational eProject</span>
+          <span>Illustrative products &amp; sample listings. No orders or payments.</span>
+          <span>BLACK / NEON EDITION</span>
+        </div>
+      </div>
+    </footer>
+    <div id="site-status" class="status-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <noscript>
+      <div class="notice container">
+        Product information and downloads are available. Enable JavaScript for search, comparison and the
+        demo bag.
+      </div>
+    </noscript>
+  </body>
+</html>

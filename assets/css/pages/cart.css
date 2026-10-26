@@ -1,0 +1,139 @@
+/* Cart page: line items, quantities, totals and demo checkout dialog. */
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(280px, 1fr);
+  gap: 32px;
+}
+
+.cart-row {
+  display: grid;
+  grid-template-columns: 95px minmax(0, 1fr);
+  gap: 20px;
+  padding: 25px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.cart-row img {
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
+  background: var(--panel);
+}
+
+.cart-row h2,
+.cart-row h3 {
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.cart-row p {
+  font-size: .8rem;
+}
+
+.cart-summary {
+  padding: 30px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  align-self: start;
+}
+
+.cart-summary h2 {
+  font-size: 1.5rem;
+}
+
+.cart-summary p {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.quantity-control input {
+  width: 65px;
+  text-align: center;
+}
+
+.quantity-control button {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--line);
+  min-width: 35px;
+  padding: 6px;
+}
+
+.dialog-backdrop,
+dialog {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 30px;
+  max-width: min(600px, calc(100% - 30px));
+}
+
+dialog::backdrop {
+  background: #000b;
+}
+
+@media (max-width: 800px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-row {
+    grid-template-columns: 70px minmax(0, 1fr);
+    gap: 13px;
+  }
+
+  .cart-row img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.cart-row .quantity-control,
+.cart-row .line-total {
+  grid-column: 2;
+}
+
+.cart-summary dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.cart-summary dd {
+  text-align: right;
+  margin: 0;
+}
+
+.cart-summary .btn {
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.cart-summary > a {
+  display: block;
+  margin-top: 10px;
+  font-size: .8rem;
+}
+
+.cart-summary > p {
+  font-size: .8rem;
+}
+
+@media (max-width: 600px) {
+  .cart-row .quantity-control {
+    margin-top: -10px;
+  }
+}
