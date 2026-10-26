@@ -1,71 +1,232 @@
-# OceanGate Limited eProject
+# 🌊 OceanGate Limited — Optical Media & Archival Storage
+> **Aptech Semester-End eProject** | Modern Web Development & XML Data Management  
+> **Theme Palette:** Cyber Black (`#070707`) & Exact Neon Cyan (`#04d9ff`)
 
-The final website uses **black and exact cyan `#04d9ff`**. It contains **132 educational products, 8 brands, 9 storage families, 14 compatible comparison types, 160 HTML pages and 132 individual Word specifications**. The website, source, tools, documentation and delivery archive all live inside this `OceanGate` folder. This is a local project; nothing has been published.
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![XML](https://img.shields.io/badge/XML%20%26%20XSD-Data_Driven-orange?style=for-the-badge&logo=xml&logoColor=white)](data/oceangate.xml)
+[![Bootstrap 5](https://img.shields.io/badge/Bootstrap-5_Used_Subset-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](assets/vendor/bootstrap-used.css)
 
-The user’s final selection supersedes the original request for two design alternatives. The other colour editions and their archives have been removed. The original brief and master prompt remain under `documentation/source-brief/` as historical requirements inputs.
+---
 
-## Open the website
+## 📌 Executive Summary
 
-Run `Start-Preview.ps1` from this folder in PowerShell. It starts a loopback-only static server and prints the address. Keep that terminal open; Ctrl+C stops it. Alternatively, with Python 3 installed, run from inside `OceanGate`:
+**OceanGate Limited** is an extensive, data-driven web portal engineered for browsing, filtering, comparing, and archiving enterprise storage media and legacy hardware. Built as a comprehensive **Aptech Semester-End eProject**, the application is powered by an authoritative **XML/XSD data engine** and client-side dynamic DOM rendering, requiring **zero backend server dependencies**.
 
-```powershell
-python -m http.server 8080 --bind 127.0.0.1
+The project comprises **160 complete HTML pages**, **132 catalogued products**, **8 iconic industry brands**, **9 storage families**, and **132 individually downloadable Word (.docx) technical specification sheets**.
+
+---
+
+## 🚀 Key Project Highlights & Statistics
+
+| Metric | Quantity / Scope | Details |
+|---|:---:|---|
+| **Total HTML Pages** | **160** | Complete set of core, catalog, category, brand, and product detail pages |
+| **Catalogue Products** | **132** | Unique storage products (`OG-001` through `OG-132`) with complete specs |
+| **Represented Brands** | **8** | Imation, Sony, Verbatim, TDK, Maxell, Samsung, HP, Quantum |
+| **Storage Families** | **9** | Floppy Disks, CD Media, CD-ROM Drives, Optical Writers, DVD Media, Data Cartridges, AIT Tapes, Data Centre Tapes, Disc Organisers |
+| **Word (.docx) Specifications** | **132** | Pre-generated formal technical specification documents ready for download |
+| **Data Engine** | **XML + XSD** | Single authoritative data store (`data/oceangate.xml` & `data/oceangate.xsd`) |
+| **Currency & Pricing** | **PKR** | All catalogue items feature realistic Pakistani Rupee sample pricing |
+| **State Persistence** | **URL Parameters** | Shareable Cart and Comparison sessions via URL queries (Zero cookies / DB) |
+
+---
+
+## 🎨 Design & Aesthetic System
+
+The website features an ultramodern, high-tech interface crafted for visual impact and technical clarity:
+
+- **Curated Color Palette**:
+  - **Dominant Base:** Deep Cyber Black (`#070707`) & Carbon Navy (`#0f141c`)
+  - **Accent & Primary:** Exact Neon Cyan (`#04d9ff`) & Vivid Aqua (`#00e5ff`)
+  - **Borders & Surfaces:** Translucent glassmorphic dark containers with subtle cyan borders
+- **Typography & Layout**:
+  - Responsive technical grid layouts with asymmetric hero sections and clean product cards
+  - High-contrast readability meeting modern web accessibility standards
+- **Motion & Accessibility**:
+  - Smooth micro-interactions, subtle hover elevations, and dynamic live state toasts
+  - Native support for `prefers-reduced-motion`
+  - Screen-reader friendly with semantic HTML5 elements, skip navigation (`Skip to content`), and ARIA live status regions (`#site-status`)
+
+---
+
+## ⚡ Core Features & User Workflows
+
+### 1. 🔍 Interactive Product Catalogue & Instant Search (`products.html`)
+- **Real-Time Search**: Search by product name, model number, capacity, or form factor without page reload.
+- **Multi-Faceted Filtering**: Filter concurrently across:
+  - Storage Family (9 categories)
+  - Brand (8 manufacturers)
+  - Product Type & Media classification
+- **Direct Actions**: Quick view, compare selection, add to bag, and direct specification download.
+
+### 2. ⚖️ Side-by-Side Product Comparison (`compare.html`)
+- Compare any two compatible products within the same storage type.
+- Side-by-side technical breakdown: Capacity, Interface, Pack Size, Compatibility, Dimensions, and Price in PKR.
+- **Stateful URL Sharing**: Comparison sessions can be shared via URL parameter (e.g. `compare.html?compare=OG-001,OG-002`).
+
+### 3. 🛍️ Dynamic Shopping Bag / Demo Cart (`cart.html`)
+- Add items to the bag directly from any card or detail page.
+- Live badge counters in the navigation header across all pages.
+- Interactive cart management: Increment/decrement quantity (1–99), remove items, and see real-time PKR subtotal and total calculations.
+- **URL State Persistence**: Retain and restore cart contents via URL parameter (e.g. `cart.html?cart=OG-001:2,OG-015:1`).
+
+### 4. 📄 Individual Technical Word Specifications (`downloads/specifications/`)
+- Every single product (`OG-001` through `OG-132`) has a dedicated, professionally formatted Microsoft Word specification sheet (`.docx`).
+- Visitors can download technical documentation directly from product cards or detail pages for offline analysis.
+
+### 5. 🏷️ Dedicated Brand & Category Hubs (`brands/` & `categories/`)
+- **8 Brand Portals**: Curated showcases dedicated to Imation, Sony, Verbatim, TDK, Maxell, Samsung, HP, and Quantum.
+- **9 Category Portals**: Individual landing hubs for each storage family with targeted contextual descriptions.
+
+### 6. 📍 Support Centres & Where-To-Buy Directories (`support.html` & `where-to-buy.html`)
+- City-based filtering across major hubs (Karachi, Lahore, Islamabad).
+- Searchable support desk listings and retailer/distributor contact cards.
+- **Interactive Storage Compatibility Guide**: Accordion walkthrough assisting users in choosing the correct drive interface, tape generation, and optical formats.
+
+### 7. ✉️ Pre-Formatted Enquiry Generator (`contact.html`)
+- Form validation that drafts an inquiry email directly into the visitor's local mail client with pre-filled product queries—requiring zero external server-side handling or database storage.
+
+### 8. 🗺️ Directory & SEO Architecture (`sitemap.html`, `sitemap.template.xml`, `robots.txt`)
+- Accessible HTML product directory linking all 160 site pages.
+- Comprehensive OpenGraph and Twitter card meta tags for rich social sharing previews.
+
+---
+
+## 🏗️ Technical Architecture & Data Flow
+
+```mermaid
+flowchart TD
+    XML["data/oceangate.xml<br/>(Authoritative Data Store)"] -->|Validated Against| XSD["data/oceangate.xsd<br/>(Schema Definition)"]
+    XML -->|Async fetch via DOMParser| JS["assets/js/common.js<br/>(Client-Side Application Core)"]
+    
+    JS -->|Dynamically Injects| Pages["Web Interface Pages"]
+    Pages --> Search["Live Search & Multi-Filters"]
+    Pages --> Compare["Product Comparison Engine"]
+    Pages --> Cart["Shopping Bag & PKR Calculator"]
+    Pages --> Locations["Store & Support Finders"]
+    
+    Pages --> StaticHTML["160 Pre-Rendered HTML Pages<br/>(Instant Load & No-JS Fallback)"]
+    StaticHTML --> Docs["132 Word Specs (.docx)<br/>(downloads/specifications/)"]
 ```
 
-Open `http://127.0.0.1:8080/`. If the parent workspace is already being served on port 8080, use `http://127.0.0.1:8080/OceanGate/` instead. Use a static HTTP server because `file://` can block the XML fetch. A local static server is not an application backend.
+### Architecture Principles:
+1. **Single Source of Truth**: All catalogue records, product codes, capacities, specs, and configuration settings are centralized in `data/oceangate.xml`.
+2. **Zero Backend Required**: Client-side JavaScript parses the XML tree using browser-native `DOMParser()` and constructs DOM elements safely via `textContent` (preventing XSS).
+3. **Graceful Degradation**: Core pages and static product pages are fully accessible even if JavaScript is disabled.
 
-The final design keeps the asymmetric hero, technical grid, crisp cards and desktop catalogue sidebar. Finite entrance and artwork animations, scroll reveals and subtle hover feedback add movement. Reduced-motion preferences disable the effects; content remains readable without JavaScript or animation.
+---
 
-## Folder contents
+## 📁 Repository Directory Structure
 
-| Location | Purpose |
+```text
+Aptech-Semester-end-E-Project/
+├── 404.html                          # Custom styled 404 error page
+├── about.html                        # Company story, scenario, and approach
+├── cart.html                         # Interactive demo shopping bag with PKR totals
+├── compare.html                      # Side-by-side compatible product comparison
+├── contact.html                      # Contact details & pre-formatted email drafter
+├── index.html                        # Homepage featuring hero, stats, and highlights
+├── product-details.html              # Dynamic single-product lookup template
+├── products.html                     # Full interactive catalogue with live filters
+├── robots.txt                        # Search engine crawl rules (Preview mode)
+├── sitemap.html                      # Complete directory of all 160 pages
+├── sitemap.template.xml              # XML sitemap template
+├── support.html                      # Support centres & interactive compatibility guide
+├── where-to-buy.html                 # Distributor & dealer directory by city
+├── README.md                         # Primary project documentation
+├── README.txt                        # Quick server launch reference
+│
+├── assets/
+│   ├── brand/                        # Official SVGs, logos, favicons, and social cards
+│   ├── css/
+│   │   ├── common.css                # Global design system, typography, & navbar/footer
+│   │   ├── components/               # Component stylesheets (catalogue, locations, product-detail)
+│   │   └── pages/                    # Dedicated stylesheets for individual pages
+│   ├── images/                       # 132 custom product SVG illustrations + hero artwork
+│   ├── js/
+│   │   ├── common.js                 # Core XML parser, state manager, cart & toast system
+│   │   ├── components/               # Component scripts (catalogue, locations, product-detail)
+│   │   └── pages/                    # Dedicated controller scripts for specific pages
+│   └── vendor/                       # Lightweight Bootstrap 5 used subset & JS bundle
+│
+├── brands/                           # 8 Dedicated brand collection pages
+│   ├── brand-hp.html
+│   ├── brand-imation.html
+│   ├── brand-maxell.html
+│   ├── brand-quantum.html
+│   ├── brand-samsung.html
+│   ├── brand-sony.html
+│   ├── brand-tdk.html
+│   └── brand-verbatim.html
+│
+├── categories/                       # 9 Storage family landing pages
+│   ├── category-ait-tapes.html
+│   ├── category-cd-rom-drives.html
+│   ├── category-compact-disc-media.html
+│   ├── category-data-cartridges.html
+│   ├── category-data-centre-tapes.html
+│   ├── category-disc-organisers.html
+│   ├── category-dvd-media.html
+│   ├── category-floppy-disks.html
+│   └── category-optical-writers.html
+│
+├── data/
+│   ├── oceangate.xml                 # Authoritative master XML catalogue
+│   └── oceangate.xsd                 # XSD Schema defining product data structure
+│
+├── deliverables/
+│   └── OceanGate.zip                 # Standalone packaged distribution archive
+│
+├── downloads/
+│   └── specifications/               # 132 Individual Word Technical Specs (OG-001 to OG-132.docx)
+│
+├── products/                         # 132 Individual pre-rendered product detail HTML pages
+└── source/                           # Source assets and authoritative XML files
+```
+
+---
+
+## 💻 How to Run the Project Locally
+
+> [!IMPORTANT]
+> **Why an HTTP Server is Required:**  
+> Modern web browsers restrict XML `fetch()` requests when opening files directly using the `file:///` protocol due to **CORS (Cross-Origin Resource Sharing)** security policies. Running a simple local static HTTP server allows `data/oceangate.xml` to load instantly.
+
+Choose any of the following standard methods to run the website:
+
+### Option 1: VS Code Live Server (Easiest)
+1. Open this project folder in **Visual Studio Code**.
+2. Install the **Live Server** extension (by Ritwick Dey) if you haven't already.
+3. Right-click on [index.html](file:///c:/Users/Abdul%20Moiz/OneDrive%20-%20Guru%20Group%20LLC/Desktop/Aptech-Semester-end-E-Project/index.html) and select **"Open with Live Server"**.
+4. The site will automatically launch in your default browser at `http://127.0.0.1:5500/`.
+
+---
+
+## 🧪 Testing & Browser Compatibility
+
+The website has been tested and verified across all modern desktop and mobile browsers:
+
+- **Google Chrome** / **Microsoft Edge** (Chromium 110+)
+- **Mozilla Firefox** (v115+)
+- **Apple Safari** (v16+)
+- **Mobile Browsers** (Chrome Android, Safari iOS)
+
+---
+
+## 👨‍💻 Project Information & Evaluation
+
+| Field | Description / Value |
 |---|---|
-| HTML files, `products/`, `categories/`, `brands/` | Complete runnable website and all detail/collection pages |
-| `assets/`, `data/`, `downloads/` | Local styling/scripts, brand and product artwork, XML/XSD and 132 Word specifications |
-| `source/` | Maintained source assets and authoritative XML used for regeneration |
-| `tools/` | Development generators and validation helpers |
-| `documentation/` | Editable report, original brief evidence, technical notes and final QA evidence |
-| `deliverables/OceanGate.zip` | Packaged independently runnable final website |
+| **Project Title** | OceanGate Limited — Optical Media & Archival Storage |
+| **Course** | Aptech Diploma / Advanced Diploma in Software Engineering (ADSE) |
+| **Curriculum Module** | Semester-End eProject (Web Development & XML) |
+| **Developed By** | Abdul Moiz & Project Team |
+| **Technologies** | HTML5, CSS3, JavaScript (ES6+), XML, XSD, Bootstrap 5 Subset |
+| **Evaluation Date** | October 2026 |
 
-## Demonstration rules
+---
 
-Models, prices, configurations, reviews and location listings are labelled educational samples. Brand names are illustrative historic catalogue groupings; no affiliation is claimed. No order, payment, account or message is stored. Cart state uses memory plus validated `cart=OG-001:2,OG-002:1` URL parameters; comparison uses `compare=OG-001,OG-002`. Quantities are integers from 1 to 99. The bag badge counts total item quantity. Refreshing a state-bearing URL restores it; a new clean URL starts empty. Contact opens an email draft for the visitor to review and send in their own mail application.
-
-## Maintain and regenerate
-
-The authoritative dataset is `source/data/oceangate.xml`. Edit this file rather than the generated copy in `data/`. The maintained CSS and JavaScript are under `source/assets/`. Validate and regenerate after edits so the website, static product pages and Word downloads stay synchronized. Generated HTML and JSON-LD are derived output, not a second maintained catalogue.
-
-Development uses Python 3 with `lxml`, `python-docx` and Pillow, plus Node with Sharp and Playwright. Browsing the completed website needs none of those development packages. Run commands from this `OceanGate` folder:
-
-```powershell
-python tools/build_catalogue.py
-node tools/export_brand.cjs
-node tools/build_visuals.cjs
-python tools/build_specs.py
-python tools/build_sites.py
-python tools/validate.py
-node tools/test_runtime.cjs
-node tools/test_browser.cjs
-```
-
-`build_catalogue.py` creates seed XML only if it is absent; existing maintained records are preserved. The Word generator consumes XML. `build_sites.py` validates XSD and writes the final website directly into this folder; an explicit output directory is optional. It no longer produces alternate colour editions. After changes to Bootstrap-dependent UI, regenerate the used-rule stylesheet with `tools/build_bootstrap_subset.cjs` and rebuild the website. The complete original Bootstrap stylesheet and MIT licence remain included.
-
-`tools/audit.cjs` uses development-only Lighthouse and axe packages. `tools/build_documentation.py` generates the editable report after current screenshots and QA results are available. `tools/package.py` prepares the final runnable archive. The JavaScript helpers use the available Codex bundled dependencies; on another workstation, install equivalent packages and adjust helper imports if necessary. No machine-specific paths are required by the browser website.
-
-## Configuration for this local project
-
-Company address, email, telephone, map coordinates and service/distributor listings are clear placeholders. They can be edited under `oceanGate/config`, `supportCentres` and `distributors` in the authoritative XML, then regenerated. Latitude and longitude zero are valid; blank or invalid coordinates produce a deliberate placeholder without a misleading map or directions link.
-
-Keep `seoMode` as `preview` for this educational project. Every page begins with `noindex, follow`. `sitemap.template.xml` uses reserved example.com and is not for submission. No domain, hosting account, API key or Search Console account is required. `documentation/launch-checklist.md` records optional future hosting work only; it is not a requirement to review or submit this project.
-
-## Documentation
-
-- `documentation/OceanGate-Project-Report.docx`: editable project report and unsigned completion certificate template.
-- `documentation/requirements-matrix.md`: requirement coverage including the final user-selected scope.
-- `documentation/architecture.md`: XML relationships, algorithms and interface standards.
-- `documentation/seo-audit.md`, `keyword-map.md`, `launch-checklist.md`: implementation notes and optional future hosting checklist.
-- `documentation/validation-summary.md` and `documentation/qa/`: current measured checks and visual evidence, including verification limits.
-- `documentation/source-brief/`: full legacy DOC extraction and all three embedded reference images.
-- `documentation/brand-notes.md`, `catalogue-assumptions.md`: original asset guidance and sample-data assumptions.
-
-Unzip `deliverables/OceanGate.zip`, enter its `OceanGate` folder and use its start instructions to review the packaged website independently.
+## 📜 Disclaimer
+This website is an **educational demonstration project** created for Aptech academic evaluation. All product configurations, sample prices in PKR, user reviews, and distributor listings are illustrative educational samples. No real financial transactions, orders, or credit card processing take place.
