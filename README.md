@@ -88,7 +88,7 @@ The website features an ultramodern, high-tech interface crafted for visual impa
 ### 7. ✉️ Pre-Formatted Enquiry Generator (`contact.html`)
 - Form validation that drafts an inquiry email directly into the visitor's local mail client with pre-filled product queries—requiring zero external server-side handling or database storage.
 
-### 8. 🗺️ Directory & SEO Architecture (`sitemap.html`, `sitemap.template.xml`, `robots.txt`)
+### 8. 🗺️ Directory & SEO Architecture (`products.html`, `sitemap.xml`, `robots.txt`)
 - Accessible HTML product directory linking all 160 site pages.
 - Comprehensive OpenGraph and Twitter card meta tags for rich social sharing previews.
 
@@ -131,12 +131,10 @@ Aptech-Semester-end-E-Project/
 ├── product-details.html              # Dynamic single-product lookup template
 ├── products.html                     # Full interactive catalogue with live filters
 ├── robots.txt                        # Search engine crawl rules (Preview mode)
-├── sitemap.html                      # Complete directory of all 160 pages
-├── sitemap.template.xml              # XML sitemap template
+├── sitemap.xml                       # XML sitemap for crawler discovery
 ├── support.html                      # Support centres & interactive compatibility guide
 ├── where-to-buy.html                 # Distributor & dealer directory by city
-├── README.md                         # Primary project documentation
-├── README.txt                        # Quick server launch reference
+├── README.md                         # Project documentation
 │
 ├── assets/
 │   ├── brand/                        # Official SVGs, logos, favicons, and social cards

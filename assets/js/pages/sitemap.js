@@ -1,4 +1,4 @@
-/* sitemap.html: shared navigation, URL state and motion; add page-only behavior here. */
+/* products.html: shared navigation, URL state and motion; add page-only behavior here. */
 (() => {
   'use strict';
 
