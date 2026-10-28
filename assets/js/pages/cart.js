@@ -1,4 +1,4 @@
-/* Cart page: line items, quantity controls, totals and order review. */
+/* Cart page: line items, quantity controls, totals and demo checkout (login required). */
 (() => {
   'use strict';
 
@@ -20,7 +20,8 @@
     setQuantity,
     updateStateURL,
     onChange,
-    onAction
+    onAction,
+    auth
   } = app.shared;
 
   function renderCart() {
@@ -112,7 +113,7 @@
       },
       [node('h2',
           {
-            text: 'Order summary'
+            text: 'Your demo summary'
           }),
         node('dl',
           {},
@@ -136,9 +137,9 @@
               })]),
         node('p',
           {
-            text: 'Shipping and product availability are confirmed on enquiry.'
+            text: 'No tax or delivery charges are added. These are illustrative prices.'
           }),
-        actionButton('Review order',
+        actionButton('Demo Checkout',
           'cart-checkout',
           '',
           'btn btn-primary'),
@@ -151,7 +152,7 @@
         node('p',
           {
             class: 'demo-note',
-            text: 'Check your quantities and specifications before sending a product enquiry.'
+            text: 'This cart is a demonstration. Nothing is submitted, saved or charged.'
           })]);
     target.replaceChildren(node('div', { class: 'cart-layout' }, [items, summary]));
   }
@@ -166,11 +167,11 @@
       [node('h2',
           {
             id: 'checkout-title',
-            text: 'Review your order'
+            text: 'Demo checkout summary'
           }),
         node('p',
           {
-            text: 'Review your selection, then contact us to confirm availability and delivery details.'
+            text: 'This is a preview only. Nothing is submitted, saved or charged. No order has been placed.'
           }),
         node('ul',
           {},
@@ -182,16 +183,42 @@
         node('p',
           {
             class: 'product-price',
-            text: `Subtotal: ${money(cartTotals() / 100)}`
+            text: `Demo total: ${money(cartTotals() / 100)}`
           })]);
     const close = node('button', { type: 'button', class: 'btn btn-primary', text: 'Back to cart' });
     close.addEventListener('click', () => dialog.close());
     dialog.addEventListener('close', () => dialog.remove());
-    dialog.append(link('Enquire about these items →', 'contact.html', 'btn btn-primary'), close);
-    close.className = 'btn btn-outline';
+    dialog.append(close);
     document.body.append(dialog);
     dialog.showModal();
     close.focus();
+  }
+
+  // Where a visitor should land after logging in: this page, bag intact, with checkout reopened.
+  function checkoutTarget() {
+    const params = new URLSearchParams(location.search);
+    params.set('checkout', '1');
+    return `cart.html?${params}`;
+  }
+
+  // Checkout needs a login. Visitors without one are sent to the login page and brought straight back.
+  function startCheckout() {
+    if (!state.cart.size) return;
+    if (!auth.isLoggedIn()) {
+      location.assign(auth.loginURL(checkoutTarget()));
+      return;
+    }
+    showCheckout();
+  }
+
+  // Back from the login page (?checkout=1): tidy the address bar, then reopen checkout.
+  function resumeCheckout() {
+    const params = new URLSearchParams(location.search);
+    if (!params.has('checkout')) return;
+    params.delete('checkout');
+    const query = params.toString();
+    history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}${location.hash}`);
+    startCheckout();
   }
 
   function initializeCart() {
@@ -210,8 +237,9 @@
       });
     onAction('cart-increase', id => setQuantity(id, (state.cart.get(id) || 0) + 1));
     onAction('cart-decrease', id => setQuantity(id, (state.cart.get(id) || 0) - 1));
-    onAction('cart-checkout', showCheckout);
+    onAction('cart-checkout', startCheckout);
     renderCart();
+    resumeCheckout();
   }
 
   app.start(initializeCart);

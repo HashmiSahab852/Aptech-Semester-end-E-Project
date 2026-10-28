@@ -1,0 +1,144 @@
+/* Login page: sign-in form, centred form and logged-in summary. */
+
+.login-panel,
+.login-signed-in {
+  --login-danger: #ff7a7a;
+}
+
+/* The shared .content-grid sets display, which would otherwise override the hidden attribute. */
+.login-grid[hidden],
+.login-signed-in[hidden],
+.login-context[hidden] {
+  display: none;
+}
+
+/* A single form, centred on the page. */
+.login-grid {
+  grid-template-columns: minmax(0, 520px);
+  justify-content: center;
+}
+
+.login-panel h2,
+.login-signed-in h2 {
+  font-size: 1.7rem;
+  margin-bottom: 18px;
+}
+
+.login-signed-in .eyebrow {
+  margin-bottom: 14px;
+}
+
+.login-context {
+  margin: 0 0 24px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  color: var(--text);
+  font-size: .82rem;
+}
+
+/* Fields */
+
+.login-panel input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 .2rem #04d9ff20;
+}
+
+.login-panel input[aria-invalid=true] {
+  border-color: var(--login-danger);
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-right: 70px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  padding: 6px 10px;
+  background: transparent;
+  color: var(--muted);
+  border: 0;
+  border-radius: var(--radius);
+  font-size: .74rem;
+  font-weight: 700;
+}
+
+.password-toggle:hover {
+  color: var(--accent);
+}
+
+.field-error,
+.login-error {
+  margin: 7px 0 0;
+  color: var(--login-danger);
+  font-size: .76rem;
+}
+
+.field-error:empty,
+.login-error:empty {
+  display: none;
+}
+
+.login-error {
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--login-danger);
+  border-radius: var(--radius);
+}
+
+.login-panel .btn {
+  width: 100%;
+}
+
+.login-panel .sample-label {
+  margin: 16px 0 0;
+}
+
+/* Logged-in summary */
+
+.login-signed-in {
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+.login-signed-in p {
+  overflow-wrap: anywhere;
+}
+
+.login-signed-in strong {
+  color: var(--text);
+}
+
+.login-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+@media (max-width: 800px) {
+  /* 16px inputs stop iOS Safari from zooming the page when a field is focused. */
+  .login-panel input {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-panel h2,
+  .login-signed-in h2 {
+    font-size: 1.45rem;
+  }
+
+  .login-actions .btn {
+    width: 100%;
+  }
+}

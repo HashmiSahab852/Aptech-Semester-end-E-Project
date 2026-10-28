@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log in | OceanGate</title>
+    <meta
+      name="description"
+      content="Log in to OceanGate to continue to checkout. This is an educational demonstration; no real account or payment is involved."
+    >
+    <meta name="robots" content="noindex, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Log in | OceanGate">
+    <meta
+      property="og:description"
+      content="Log in to OceanGate to continue to checkout. This is an educational demonstration; no real account or payment is involved."
+    >
+    <meta property="og:url" content="https://example.com/login.html">
+    <meta property="og:image" content="https://example.com/assets/brand/social-neon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Log in | OceanGate">
+    <meta
+      name="twitter:description"
+      content="Log in to OceanGate to continue to checkout. This is an educational demonstration; no real account or payment is involved."
+    >
+    <meta name="twitter:image" content="https://example.com/assets/brand/social-neon.png">
+    <meta name="theme-color" content="#070707">
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+    <link rel="stylesheet" href="assets/vendor/bootstrap-used.css">
+    <script defer="defer" src="assets/vendor/bootstrap.bundle.min.js">
+    </script>
+    <!-- Shared styling, followed by this page's own stylesheet. -->
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/pages/login.css">
+    <!-- Shared behavior (including the login session), then this page's own JavaScript. -->
+    <script defer="" src="assets/js/common.js">
+    </script>
+    <script defer="" src="assets/js/pages/login.js">
+    </script>
+  </head>
+  <body data-page="login" data-root="./">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="demo-strip">
+      A storage catalogue, thoughtfully connected.
+      <span>Educational demo · PKR sample prices</span>
+    </div>
+    <!-- Consistent navigation with clean crawlable links; visitor state is added only on interaction. -->
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a href="index.html" class="brand" aria-label="OceanGate home">
+          <img src="assets/brand/logo-neon.svg" width="240" height="60" alt="OceanGate Limited">
+        </a>
+        <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+          <a href="products.html">Products</a>
+          <a href="about.html">About us</a>
+          <a href="support.html">Support</a>
+          <a href="where-to-buy.html">Where to buy</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-tools">
+          <a href="compare.html" class="compare-nav" aria-label="Compare products">
+            ⇄
+            <span data-compare-count="">0</span>
+          </a>
+          <a href="cart.html" class="cart-link">
+            Bag
+            <span class="count" data-cart-count="">0</span>
+          </a>
+          <button
+            id="menu-toggle"
+            class="menu-toggle"
+            aria-controls="site-nav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <div class="container">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Log in</span>
+        </nav>
+        <div id="load-state" role="status" aria-live="polite">Loading catalogue controls…</div>
+      </div>
+      <div class="container">
+        <header class="page-intro">
+          <div class="eyebrow">Your account</div>
+          <h1>Log in to continue.</h1>
+          <p>Log in with any email and password to try the demo. Nothing is sent to a server or charged.</p>
+        </header>
+      </div>
+      <section class="container">
+        <div id="login-grid" class="content-grid login-grid">
+          <form id="login-form" class="panel login-panel" novalidate>
+            <h2>Log in</h2>
+            <p id="login-context" class="login-context" hidden></p>
+            <div class="field">
+              <label for="login-email">Email address</label>
+              <input
+                id="login-email"
+                name="email"
+                type="email"
+                inputmode="email"
+                autocomplete="username"
+                autocapitalize="none"
+                spellcheck="false"
+                maxlength="150"
+                required
+                aria-describedby="login-email-error"
+              >
+              <p id="login-email-error" class="field-error"></p>
+            </div>
+            <div class="field">
+              <label for="login-password">Password</label>
+              <div class="password-field">
+                <input
+                  id="login-password"
+                  name="password"
+                  type="password"
+                  autocomplete="current-password"
+                  maxlength="100"
+                  required
+                  aria-describedby="login-password-error"
+                >
+                <button id="login-password-toggle" class="password-toggle" type="button" aria-label="Show password">
+                  Show
+                </button>
+              </div>
+              <p id="login-password-error" class="field-error"></p>
+            </div>
+            <p id="login-error" class="login-error" role="alert"></p>
+            <button id="login-submit" class="btn btn-primary" type="submit">Log in →</button>
+            <p class="sample-label">
+              Demonstration only. No real account is created and nothing leaves your browser.
+            </p>
+          </form>
+        </div>
+        <div id="login-signed-in" class="panel login-signed-in" hidden>
+          <div class="eyebrow">Logged in</div>
+          <h2>You are logged in.</h2>
+          <p>
+            Signed in as
+            <strong id="login-user-name"></strong>
+            (<span id="login-user-email"></span>). You can go straight to checkout from your bag.
+          </p>
+          <div class="login-actions">
+            <a class="btn btn-primary" href="products.html">Continue shopping →</a>
+            <a class="btn btn-outline" href="cart.html">Go to your bag</a>
+            <button id="login-signed-out" class="btn btn-outline" type="button">Log out</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Supporting navigation and transparent educational context. -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html">
+              <img src="assets/brand/logo-neon.svg" width="240" height="60" alt="OceanGate Limited">
+            </a>
+            <p>Storage with a purpose. Explore the right media for the things worth keeping.</p>
+          </div>
+          <div class="footer-col">
+            <h3>Explore</h3>
+            <a href="products.html">All products</a>
+            <a href="compare.html">Compare products</a>
+            <a href="products.html">Product catalogue</a>
+            <a href="about.html">Our story</a>
+          </div>
+          <div class="footer-col">
+            <h3>Here to help</h3>
+            <a href="support.html">Support centres</a>
+            <a href="where-to-buy.html">Where to buy</a>
+            <a href="contact.html">Get in touch</a>
+            <a href="cart.html">Your demo bag</a>
+          </div>
+          <div class="footer-col">
+            <h3>Make an informed choice</h3>
+            <p class="footer-note">Check formats. Compare specifications. Find a compatible fit.</p>
+            <a href="support.html#compatibility">Compatibility guide ↗</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>OceanGate Limited · Educational eProject</span>
+          <span>Illustrative products &amp; sample listings. No orders or payments.</span>
+          <span>BLACK / NEON EDITION</span>
+        </div>
+      </div>
+    </footer>
+    <div id="site-status" class="status-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <noscript>
+      <div class="notice container">
+        Logging in needs JavaScript. Product information and downloads are still available without it.
+      </div>
+    </noscript>
+  </body>
+</html>
