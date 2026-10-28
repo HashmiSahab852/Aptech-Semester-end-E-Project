@@ -1117,3 +1117,155 @@ body {
 .footer-col .footer-note {
   font-size: .78rem;
 }
+
+/* Login / account state in the navigation. Added to every page by common.js. */
+
+.auth-nav {
+  position: relative;
+  display: flex;
+  align-self: stretch;
+}
+
+.auth-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 14px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: inherit;
+  line-height: inherit;
+  white-space: nowrap;
+  transition: transform .22s, background .22s, border-color .22s, box-shadow .22s, color .2s;
+}
+
+.auth-link:hover {
+  color: var(--accent);
+}
+
+.auth-link:hover,
+.auth-link[aria-current=page],
+.auth-link[aria-expanded=true] {
+  border-color: var(--accent);
+}
+
+.auth-avatar {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-size: .7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.auth-name {
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.auth-caret {
+  font-size: .7rem;
+  color: var(--muted);
+}
+
+.auth-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 40;
+  width: 250px;
+  max-width: calc(100vw - 40px);
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 40px #0008;
+}
+
+.auth-menu[hidden] {
+  display: none;
+}
+
+.auth-menu p {
+  margin: 0;
+}
+
+.auth-menu-label {
+  font: 600 .66rem/1.4 'Courier New', monospace;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px !important;
+}
+
+.auth-menu-name {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.auth-menu-email {
+  font-size: .78rem;
+  overflow-wrap: anywhere;
+}
+
+.auth-menu .auth-logout {
+  width: 100%;
+  margin-top: 18px;
+  padding: 10px 14px;
+}
+
+/* Copy that lives inside the collapsible menu; only shown on narrow screens (see below). */
+.auth-nav-menu {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .auth-name {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  /* The header keeps just Bag and the menu button; Login / Log out join the menu links instead. */
+  .auth-nav {
+    display: none;
+  }
+
+  .auth-nav-menu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .auth-menu-who,
+  .auth-menu-logout {
+    padding: 12px 4px;
+    font-size: .9rem;
+    color: var(--muted);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+  }
+
+  .auth-menu-who strong {
+    color: var(--text);
+  }
+
+  .auth-menu-logout:hover {
+    color: var(--text);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-link {
+    transition: none;
+  }
+}

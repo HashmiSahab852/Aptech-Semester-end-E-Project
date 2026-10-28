@@ -1,5 +1,6 @@
 /* OceanGate catalogue enhancement. XML is the only catalogue/configuration source.
-* Visitor state lives only in memory and validated URL parameters. */
+* Cart and comparison state live only in memory and validated URL parameters. The one exception is
+* the demo login session, kept in localStorage (see "Demo login session" below). */
 (() => {
   'use strict';
 
@@ -458,6 +459,206 @@
     preference.addEventListener?.('change', onPreferenceChange);
   }
 
+  // ---- Demo login session --------------------------------------------------------------------
+  // A front-end demonstration only. The session lives in localStorage so it survives page
+  // navigation; no password is stored and nothing is ever sent to a server.
+  const SESSION_KEY = 'oceangate.session';
+  const LOGIN_PAGE = 'login.html';
+
+  // Visitors can block or edit localStorage, so anything unexpected simply means "logged out".
+  function readSession() {
+    try {
+      const data = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
+      if (!data || typeof data.name !== 'string' || typeof data.email !== 'string' || !data.name.trim()) return null;
+      return { name: data.name.trim().slice(0, 60), email: data.email.trim().slice(0, 150) };
+    } catch (error) {
+      return null;
+    }
+  }
+
+  // Only pages inside this site are accepted, so a crafted ?next= can never lead visitors elsewhere.
+  function resolveNext(value) {
+    if (typeof value !== 'string' || !value || value.length > 2000) return null;
+    let url;
+    try {
+      url = new URL(value, root);
+    } catch (error) {
+      return null;
+    }
+    const inSite = url.origin === root.origin && url.pathname.startsWith(root.pathname);
+    const isPage = url.pathname.endsWith('.html') || url.pathname.endsWith('/');
+    if (!inSite || !isPage || url.pathname.endsWith(`/${LOGIN_PAGE}`)) return null;
+    return url;
+  }
+
+  // The current page as a site-relative address, so the visitor can be returned to it after login.
+  function currentTarget() {
+    if (pageName === 'login') return new URLSearchParams(location.search).get('next') || 'index.html';
+    const path = location.pathname.startsWith(root.pathname) ? location.pathname.slice(root.pathname.length) : '';
+    return (path || 'index.html') + location.search + location.hash;
+  }
+
+  // Login page address. It also carries the bag and comparison, so their counts survive the visit.
+  function loginURL(next = currentTarget()) {
+    const url = new URL(localPath(LOGIN_PAGE));
+    const here = new URLSearchParams(location.search);
+    ['cart', 'compare'].forEach(key => { if (here.has(key)) url.searchParams.set(key, here.get(key)); });
+    url.searchParams.set('next', next);
+    return url.href;
+  }
+
+  function notifyAuthChange() {
+    renderAuthNav();
+    window.dispatchEvent(new CustomEvent('oceangate:authchange'));
+  }
+
+  const auth = {
+    user: readSession,
+    isLoggedIn: () => readSession() !== null,
+    // Returns false when the browser refuses to keep the session, so callers never loop.
+    login(user) {
+      try {
+        localStorage.setItem(SESSION_KEY, JSON.stringify({ name: user.name, email: user.email, signedInAt: Date.now() }));
+      } catch (error) {
+        return false;
+      }
+      if (!readSession()) return false;
+      notifyAuthChange();
+      return true;
+    },
+    logout() {
+      try {
+        localStorage.removeItem(SESSION_KEY);
+      } catch (error) {
+        // Nothing could have been stored, so there is nothing to remove.
+      }
+      notifyAuthChange();
+    },
+    loginURL,
+    resolveNext
+  };
+
+  function loginLink(className) {
+    const link = node('a',
+      {
+        href: localPath(LOGIN_PAGE),
+        class: className,
+        text: 'Login'
+      });
+    if (pageName === 'login') link.setAttribute('aria-current', 'page');
+    // Refreshed just before use so the visitor comes back to wherever they are, bag intact.
+    const refresh = () => { link.href = loginURL(); };
+    ['pointerdown', 'focus', 'click'].forEach(type => link.addEventListener(type, refresh));
+    return link;
+  }
+
+  function logOut() {
+    auth.logout();
+    announce('You have been logged out.');
+    // Hand focus to whichever Login link is visible at this screen size.
+    [...document.querySelectorAll('.auth-login, .auth-menu-link')].find(link => link.offsetParent)?.focus();
+  }
+
+  function setAuthMenu(open) {
+    const button = $('.auth-account');
+    const menu = $('#auth-menu');
+    if (!button || !menu) return;
+    menu.hidden = !open;
+    button.setAttribute('aria-expanded', String(open));
+  }
+
+  // Wide screens: an account button beside Bag that opens a small panel with the name and Log out.
+  function accountControls(user) {
+    const button = node('button',
+      {
+        type: 'button',
+        class: 'auth-link auth-account',
+        'aria-expanded': 'false',
+        'aria-controls': 'auth-menu',
+        'aria-label': `Account menu for ${user.name}`
+      },
+      [node('span',
+          {
+            class: 'auth-avatar',
+            'aria-hidden': 'true',
+            text: Array.from(user.name)[0].toUpperCase()
+          }),
+        node('span',
+          {
+            class: 'auth-name',
+            text: user.name.split(/\s+/)[0]
+          }),
+        node('span',
+          {
+            class: 'auth-caret',
+            'aria-hidden': 'true',
+            text: '▾'
+          })]);
+    const logout = node('button', { type: 'button', class: 'btn btn-outline auth-logout', text: 'Log out' });
+    const menu = node('div',
+      {
+        id: 'auth-menu',
+        class: 'auth-menu',
+        tabindex: '-1',
+        hidden: true
+      },
+      [node('p', { class: 'auth-menu-label', text: 'Logged in as' }),
+        node('p', { class: 'auth-menu-name', text: user.name }),
+        node('p', { class: 'auth-menu-email', text: user.email }),
+        logout]);
+    button.addEventListener('click', () => setAuthMenu(menu.hidden));
+    logout.addEventListener('click', logOut);
+    return [button, menu];
+  }
+
+  // Narrow screens: the same state as the last items of the collapsible menu, so the header is unchanged.
+  function menuControls(user) {
+    if (!user) return [loginLink('auth-menu-link')];
+    const logout = node('button', { type: 'button', class: 'auth-menu-logout', text: 'Log out' });
+    logout.addEventListener('click', logOut);
+    return [node('span', { class: 'auth-menu-who' }, ['Logged in as ', node('strong', { text: user.name })]), logout];
+  }
+
+  function renderAuthNav() {
+    const tools = $('.nav-tools');
+    if (!tools) return;
+    const user = readSession();
+    let holder = $('.auth-nav', tools);
+    if (!holder) {
+      holder = node('div', { class: 'auth-nav' });
+      holder.addEventListener('focusout', event => {
+          if (!holder.contains(event.relatedTarget)) setAuthMenu(false);
+        });
+      tools.insertBefore(holder, $('#menu-toggle', tools));
+    }
+    holder.replaceChildren(...(user ? accountControls(user) : [loginLink('auth-link auth-login')]));
+    const menu = $('#site-nav');
+    if (!menu) return;
+    let items = $('.auth-nav-menu', menu);
+    if (!items) {
+      items = node('div', { class: 'auth-nav-menu' });
+      menu.append(items);
+    }
+    items.replaceChildren(...menuControls(user));
+  }
+
+  function setupAuthNav() {
+    renderAuthNav();
+    document.addEventListener('click', event => {
+        if (!event.target.closest('.auth-nav')) setAuthMenu(false);
+      });
+    document.addEventListener('keydown', event => {
+        const menu = $('#auth-menu');
+        if (event.key !== 'Escape' || !menu || menu.hidden) return;
+        setAuthMenu(false);
+        $('.auth-account')?.focus();
+      });
+    // Keeps other open tabs in step when the visitor logs in or out elsewhere.
+    window.addEventListener('storage', event => {
+        if (event.key === null || event.key === SESSION_KEY) notifyAuthChange();
+      });
+  }
+
   async function initialize(initializePage) {
     setupNavigation();
     setupActions();
@@ -522,11 +723,16 @@
     addToCart,
     addToCompare,
     setQuantity,
+    auth,
     shared: {
       state, root, pageName, $, $$, node, link, localPath, typeLabel,
       brandName, categoryName, productPath, cents, money, announce,
       productImage, actionButton, populateSelect, updateStateURL,
-      cartTotals, mapConfiguration, setQuantity, onChange, onAction
+      cartTotals, mapConfiguration, setQuantity, onChange, onAction, auth
     }
   };
+
+  // Scripts are deferred, so the navigation already exists; the check covers any other loading style.
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setupAuthNav);
+  else setupAuthNav();
 })();

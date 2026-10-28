@@ -1,4 +1,4 @@
-/* Cart page: line items, quantity controls, totals and demo checkout. */
+/* Cart page: line items, quantity controls, totals and demo checkout (login required). */
 (() => {
   'use strict';
 
@@ -20,7 +20,8 @@
     setQuantity,
     updateStateURL,
     onChange,
-    onAction
+    onAction,
+    auth
   } = app.shared;
 
   function renderCart() {
@@ -193,6 +194,33 @@
     close.focus();
   }
 
+  // Where a visitor should land after logging in: this page, bag intact, with checkout reopened.
+  function checkoutTarget() {
+    const params = new URLSearchParams(location.search);
+    params.set('checkout', '1');
+    return `cart.html?${params}`;
+  }
+
+  // Checkout needs a login. Visitors without one are sent to the login page and brought straight back.
+  function startCheckout() {
+    if (!state.cart.size) return;
+    if (!auth.isLoggedIn()) {
+      location.assign(auth.loginURL(checkoutTarget()));
+      return;
+    }
+    showCheckout();
+  }
+
+  // Back from the login page (?checkout=1): tidy the address bar, then reopen checkout.
+  function resumeCheckout() {
+    const params = new URLSearchParams(location.search);
+    if (!params.has('checkout')) return;
+    params.delete('checkout');
+    const query = params.toString();
+    history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}${location.hash}`);
+    startCheckout();
+  }
+
   function initializeCart() {
     onChange('cart', renderCart);
     onAction('cart-remove', id => {
@@ -209,8 +237,9 @@
       });
     onAction('cart-increase', id => setQuantity(id, (state.cart.get(id) || 0) + 1));
     onAction('cart-decrease', id => setQuantity(id, (state.cart.get(id) || 0) - 1));
-    onAction('cart-checkout', showCheckout);
+    onAction('cart-checkout', startCheckout);
     renderCart();
+    resumeCheckout();
   }
 
   app.start(initializeCart);
