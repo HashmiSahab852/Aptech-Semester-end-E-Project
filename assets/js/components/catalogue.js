@@ -56,15 +56,15 @@
         node('div', { class: 'product-actions' }, [
             link('View details', productPath(product), 'btn btn-outline'),
             actionButton('Add to cart', 'cart-add', product.id, 'btn btn-primary'),
-            actionButton('Compare +', 'compare-add', product.id, 'text-action'),
-            node('a',
-              {
-                href: localPath(product.download),
-                download: '',
-                class: 'text-action',
-                text: 'Specifications .docx'
-              })
-          ])
+            actionButton('Compare +', 'compare-add', product.id, 'text-action')
+          ]),
+        node('a',
+          {
+            href: localPath(product.download),
+            download: '',
+            class: 'download-link',
+            text: 'Specifications'
+          })
       ]);
     return node('article', { class: 'product-card', 'data-product': product.id }, [imageLink, content]);
   }
