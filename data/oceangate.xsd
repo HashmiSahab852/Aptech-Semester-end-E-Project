@@ -47,7 +47,7 @@
     </xs:element></xs:sequence></xs:complexType></xs:element>
     <xs:element name="supportCentres"><xs:complexType><xs:sequence><xs:element name="centre" type="listing" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
     <xs:element name="distributors"><xs:complexType><xs:sequence><xs:element name="distributor" type="listing" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
-    <xs:element name="testimonials"><xs:complexType><xs:sequence><xs:element name="testimonial" type="attributedText" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+    <xs:element name="testimonials"><xs:complexType><xs:sequence><xs:element name="testimonial" type="attributedText" minOccurs="0" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
   </xs:sequence></xs:complexType>
   <xs:key name="brandKey"><xs:selector xpath="brands/brand"/><xs:field xpath="@id"/></xs:key>
   <xs:key name="categoryKey"><xs:selector xpath="categories/category"/><xs:field xpath="@id"/></xs:key>

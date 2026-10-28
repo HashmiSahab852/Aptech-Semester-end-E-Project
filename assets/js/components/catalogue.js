@@ -27,11 +27,10 @@
     const imageLink = link('', productPath(product), 'product-image');
     imageLink.append(productImage(product));
     const content = node('div', { class: 'product-content' }, [
-        node('p',
-          {
-            class: 'product-meta',
-            text: `${brandName(product.brand)} / ${typeLabel(product.comparisonType)}`
-          }),
+        node('div', { class: 'product-meta' }, [
+          node('img', { class: `manufacturer-logo brand-${product.brand}`, src: localPath(`assets/brand/brand-${product.brand}.svg`), alt: brandName(product.brand), width: 110, height: 36, loading: 'lazy' }),
+          node('span', { text: typeLabel(product.comparisonType) })
+        ]),
         node('h3', {}, [link(product.name, productPath(product))]),
         node('ul',
           {
@@ -52,7 +51,7 @@
               }),
             node('small',
               {
-                text: 'Demo price'
+                text: 'Price'
               })]),
         node('div', { class: 'product-actions' }, [
             link('View details', productPath(product), 'btn btn-outline'),

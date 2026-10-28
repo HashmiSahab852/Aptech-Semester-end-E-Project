@@ -21,7 +21,7 @@
               [node('span',
                   {
                     class: 'eyebrow',
-                    text: `${record.city} · Sample listing`
+                    text: `${record.city}`
                   }),
                 node('h3',
                   {
@@ -46,9 +46,9 @@
                   })])) : [node('p',
               {
                 class: 'empty-state',
-                text: 'No sample locations match. Try another city or search.'
+                text: 'No locations match. Try another city or search.'
               })]));
-      if ($('#location-count')) $('#location-count').textContent = `${selected.length} sample ${kind === 'centre' ? 'support centres' : 'outlets'}`;
+      if ($('#location-count')) $('#location-count').textContent = `${selected.length} ${kind === 'centre' ? 'support centres' : 'outlets'}`;
     }
     $('#location-city')?.addEventListener('change', render);
     $('#location-search')?.addEventListener('input', render);

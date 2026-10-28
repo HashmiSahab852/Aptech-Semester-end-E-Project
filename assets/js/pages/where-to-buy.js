@@ -1,4 +1,4 @@
-/* where-to-buy.html: search and filter the sample distributor listings. */
+/* where-to-buy.html: search and filter the distributor listings. */
 (() => {
   'use strict';
 

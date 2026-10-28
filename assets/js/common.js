@@ -58,6 +58,12 @@
       maximumFractionDigits: 2
     }).format(value);
   function announce(message, error = false) {
+    const drawerMessage = $('#cart-drawer[open] .cart-drawer-message');
+    if (drawerMessage) {
+      drawerMessage.textContent = message;
+      drawerMessage.classList.toggle('is-error', error);
+      return;
+    }
     let target = $('#site-status');
     if (!target) {
       target = node('div',
@@ -204,6 +210,7 @@
       robots.content = 'noindex,follow';
     }
     updateCompareTray();
+    if (cartDrawer?.open) renderCartDrawer();
   }
 
   function productImage(product, className = '') {
@@ -246,6 +253,141 @@
     pageActions.set(name, handler);
   }
 
+  // A shared side cart for every Add to cart button, including catalogue cards.
+  let cartDrawer;
+  let cartDrawerTrigger;
+  let recentlyAddedId;
+
+  function ensureCartDrawer() {
+    if (cartDrawer) return cartDrawer;
+    const close = node('button', {
+      type: 'button', class: 'cart-drawer-close', text: '×', 'aria-label': 'Close cart'
+    });
+    close.addEventListener('click', () => cartDrawer.close());
+    const continueShopping = node('button', {
+      type: 'button', class: 'btn btn-outline cart-drawer-continue', text: 'Continue shopping'
+    });
+    continueShopping.addEventListener('click', () => cartDrawer.close());
+    cartDrawer = node('dialog', {
+      id: 'cart-drawer', class: 'cart-drawer', 'aria-labelledby': 'cart-drawer-title'
+    }, [
+      node('header', { class: 'cart-drawer-header' }, [
+        node('div', {}, [
+          node('span', { class: 'eyebrow', text: 'Your selection' }),
+          node('h2', { id: 'cart-drawer-title', text: 'Your Cart' })
+        ]), close
+      ]),
+      node('p', { class: 'cart-drawer-message', role: 'status', 'aria-live': 'polite', 'aria-atomic': 'true' }),
+      node('div', { class: 'cart-drawer-items', 'aria-label': 'Cart items' }),
+      node('footer', { class: 'cart-drawer-footer' }, [
+        node('div', { class: 'cart-drawer-subtotal' }, [
+          node('span', { text: 'Subtotal' }), node('strong', { 'data-drawer-subtotal': '' })
+        ]),
+        node('p', { class: 'cart-drawer-note', text: 'Review your selection and quantities in your cart.' }),
+        link('View Cart →', 'cart.html', 'btn btn-primary cart-drawer-view'),
+        continueShopping
+      ])
+    ]);
+    cartDrawer.addEventListener('close', () => {
+      document.body.classList.remove('cart-drawer-open');
+      if (cartDrawerTrigger?.isConnected) cartDrawerTrigger.focus({ preventScroll: true });
+    });
+    cartDrawer.addEventListener('click', event => {
+      if (event.target === cartDrawer) {
+        const bounds = cartDrawer.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) cartDrawer.close();
+      }
+      const button = event.target.closest('[data-drawer-action]');
+      if (!button || button.disabled) return;
+      const { id, drawerAction } = button.dataset;
+      if (!state.cart.has(id)) return;
+      if (drawerAction === 'remove') {
+        const name = state.byId.get(id).name;
+        state.cart.delete(id);
+        updateStateURL();
+        refresh('cart');
+        announce(`${name} removed from cart.`);
+      } else {
+        const change = drawerAction === 'increase' ? 1 : -1;
+        setQuantity(id, state.cart.get(id) + change);
+      }
+    });
+    document.body.append(cartDrawer);
+    return cartDrawer;
+  }
+
+  function renderCartDrawer() {
+    if (!cartDrawer) return;
+    const focused = document.activeElement;
+    const focusKey = cartDrawer.contains(focused) && focused.dataset.drawerAction
+      ? { id: focused.dataset.id, action: focused.dataset.drawerAction } : null;
+    const items = $('.cart-drawer-items', cartDrawer);
+    const totalQuantity = [...state.cart.values()].reduce((total, quantity) => total + quantity, 0);
+    $('#cart-drawer-title', cartDrawer).textContent = `Your Cart (${totalQuantity})`;
+    const controls = (label, action, id, disabled) => node('button', {
+      type: 'button', text: label, class: action === 'remove' ? 'cart-drawer-remove' : 'cart-drawer-quantity-button',
+      'data-drawer-action': action, 'data-id': id, disabled,
+      'aria-label': `${action === 'increase' ? 'Increase quantity of' : action === 'decrease' ? 'Decrease quantity of' : 'Remove'} ${state.byId.get(id).name}`
+    });
+    const rows = [...state.cart].reverse().map(([id, quantity]) => {
+      const product = state.byId.get(id);
+      const pictureLink = link('', productPath(product), 'cart-drawer-image');
+      const picture = productImage(product);
+      picture.loading = 'eager';
+      pictureLink.append(picture);
+      return node('article', { class: `cart-drawer-item${id === recentlyAddedId ? ' is-added' : ''}`, 'data-cart-item': id }, [
+        pictureLink,
+        node('div', { class: 'cart-drawer-item-info' }, [
+          node('span', { class: 'cart-drawer-brand', text: brandName(product.brand) }),
+          node('h3', {}, [link(product.name, productPath(product))]),
+          node('p', { class: 'cart-drawer-unit-price', text: `${money(product.price)} each` }),
+          node('div', { class: 'cart-drawer-item-bottom' }, [
+            node('div', { class: 'cart-drawer-quantity', role: 'group', 'aria-label': `Quantity for ${product.name}` }, [
+              controls('−', 'decrease', id, quantity <= 1),
+              node('span', { text: quantity, 'data-drawer-quantity': id }),
+              controls('+', 'increase', id, quantity >= 99)
+            ]),
+            node('strong', { class: 'cart-drawer-line-total', text: money(cents(product.price) * quantity / 100) })
+          ]),
+          controls('Remove', 'remove', id, false)
+        ])
+      ]);
+    });
+    if (!rows.length) {
+      rows.push(node('div', { class: 'cart-drawer-empty' }, [
+        node('h3', { text: 'Your cart is empty' }),
+        node('p', { text: 'Find the right format for your next project.' }),
+        link('Browse products →', 'products.html', 'btn btn-primary')
+      ]));
+    }
+    items.replaceChildren(...rows);
+    $('[data-drawer-subtotal]', cartDrawer).textContent = money(cartTotals() / 100);
+    $('.cart-drawer-view', cartDrawer).href = withState(localPath('cart.html')).href;
+    $('.cart-drawer-footer', cartDrawer).hidden = !state.cart.size;
+    if (focusKey && cartDrawer.open) {
+      const replacement = $$('[data-drawer-action]', cartDrawer).find(button => button.dataset.id === focusKey.id && button.dataset.drawerAction === focusKey.action && !button.disabled);
+      (replacement || $('.cart-drawer-close', cartDrawer)).focus({ preventScroll: true });
+    }
+  }
+
+  function openCartDrawer(id) {
+    const drawer = ensureCartDrawer();
+    recentlyAddedId = id;
+    if (!drawer.open) cartDrawerTrigger = document.activeElement;
+    renderCartDrawer();
+    const message = $('.cart-drawer-message', drawer);
+    message.classList.remove('is-error');
+    message.textContent = '✓ Added to cart';
+    $('#site-status')?.classList.remove('is-visible');
+    if (!drawer.open) {
+      drawer.showModal();
+      document.body.classList.add('cart-drawer-open');
+      $('.cart-drawer-close', drawer).focus({ preventScroll: true });
+    }
+    const addedItem = $$('[data-cart-item]', drawer).find(item => item.dataset.cartItem === id);
+    if (addedItem) $('.cart-drawer-items', drawer).scrollTop = addedItem.offsetTop - $('.cart-drawer-items', drawer).offsetTop;
+  }
+
   function addToCart(id) {
     const product = state.byId.get(id);
     if (!product) {
@@ -258,7 +400,7 @@
     state.cart.set(id, quantity + 1);
     updateStateURL();
     refresh('cart');
-    announce(`${product.name} added to your demo cart. Quantity: ${quantity + 1}.`);
+    openCartDrawer(id);
     return true;
   }
 
@@ -485,7 +627,7 @@
         true);
       return true;
     } catch (error) {
-      const message = location.protocol === 'file:' ? 'Run Start-Preview.ps1 in PowerShell, then open its local address to load the catalogue.' : `${error.message || 'The catalogue could not be loaded.'} Please reload or try again later.`;
+      const message = location.protocol === 'file:' ? 'Open this website through a local web server to load the catalogue.' : `${error.message || 'The catalogue could not be loaded.'} Please reload or try again later.`;
       if (loading) {
         loading.hidden = false;
         loading.textContent = message;

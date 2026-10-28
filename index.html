@@ -27,23 +27,23 @@
     <meta name="theme-color" content="#070707">
     <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
-    <link rel="stylesheet" href="assets/vendor/bootstrap-used.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
     <script defer="defer" src="assets/vendor/bootstrap.bundle.min.js">
     </script>
     <!-- Shared styling, followed by this page's own stylesheet. -->
-    <link rel="stylesheet" href="assets/css/common.css">
-    <link rel="stylesheet" href="assets/css/pages/index.css">
+    <link rel="stylesheet" href="assets/css/common.css?v=20261028-storefront">
+    <link rel="stylesheet" href="assets/css/pages/index.css?v=20261028-storefront">
     <!-- Shared behavior, required page component, then this page's own JavaScript. -->
-    <script defer="" src="assets/js/common.js">
+    <script defer="" src="assets/js/common.js?v=20261028-storefront">
     </script>
-    <script defer="" src="assets/js/pages/index.js">
+    <script defer="" src="assets/js/pages/index.js?v=20261028-storefront">
     </script>
   </head>
   <body data-page="index" data-root="./">
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="demo-strip">
-      A storage catalogue, thoughtfully connected.
-      <span>Educational demo · PKR sample prices</span>
+      Optical media, drives &amp; archival storage
+      <span>Find your format. Compare the details.</span>
     </div>
     <!-- Consistent navigation with clean crawlable links; visitor state is added only on interaction. -->
     <header class="site-header">
@@ -64,7 +64,7 @@
             <span data-compare-count="">0</span>
           </a>
           <a href="cart.html" class="cart-link">
-            Bag
+            Cart
             <span class="count" data-cart-count="">0</span>
           </a>
           <button
@@ -83,73 +83,89 @@
       <div class="container">
         <div id="load-state" role="status" aria-live="polite">Loading catalogue controls…</div>
       </div>
-      <section class="hero">
+      <section class="store-hero" aria-label="Featured storage collections">
         <div class="container">
-          <div class="hero-inner">
-            <div class="hero-copy">
-              <div class="eyebrow">Storage that connects generations</div>
-              <h1>
-                Small formats.
-                <br>
-                <em>Big possibilities.</em>
-              </h1>
-              <p>
-                From everyday disc media to dependable tape archives. Find the format, explore the details,
-                and make a choice that fits.
-              </p>
-              <div class="hero-actions">
-                <a href="products.html" class="btn btn-primary">
-                  Explore the catalogue
-                  <span>↗</span>
-                </a>
-                <a href="compare.html" class="btn btn-outline">
-                  Compare products
-                  <span>⇄</span>
-                </a>
+          <div id="store-carousel" class="carousel slide store-carousel" role="region" aria-roledescription="carousel" aria-label="Storage collections">
+            <div class="carousel-inner" aria-live="off">
+              <div class="carousel-item active" role="group" aria-roledescription="slide" aria-label="1 of 3: Optical media">
+                <div class="hero-slide">
+                  <div class="hero-copy">
+                    <div class="eyebrow">Optical media &amp; everyday storage</div>
+                    <h1>Your next project.<br>The right storage.</h1>
+                    <p>CDs, DVDs and compatible drives, all in one place. Find your format and get back to what you do.</p>
+                    <div class="hero-actions"><a class="btn btn-primary" href="products.html">Browse the collection <span aria-hidden="true">→</span></a></div>
+                  </div>
+                  <figure class="hero-photo">
+                    <img src="assets/images/hero-optical.webp" alt="Silver optical discs with a black external disc drive on a studio tabletop" width="1536" height="1024" fetchpriority="high">
+                    <figcaption>CDs · DVDs · Optical drives</figcaption>
+                  </figure>
+                </div>
               </div>
-              <p class="hero-footnote">132 considered options. Clear specifications. One place.</p>
+              <div class="carousel-item" role="group" aria-roledescription="slide" aria-label="2 of 3: Archival storage">
+                <div class="hero-slide archive-slide">
+                  <div class="hero-copy">
+                    <div class="eyebrow">A place for your archives</div>
+                    <h2>Think ahead.<br>Keep it together.</h2>
+                    <p>Explore tape cartridges for your archive. Compare generations, capacities and compatibility before you choose.</p>
+                    <div class="hero-actions"><a class="btn btn-primary" href="categories/category-data-centre-tapes.html">Explore archive media <span aria-hidden="true">→</span></a></div>
+                  </div>
+                  <figure class="hero-photo">
+                    <img src="assets/images/hero-archive.webp" alt="Archival tape cartridges arranged on a workbench beside storage racks" width="1536" height="1024" decoding="async">
+                    <figcaption>Magnetic media · Tape archives</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="carousel-item" role="group" aria-roledescription="slide" aria-label="3 of 3: About OceanGate">
+                <div class="hero-slide">
+                  <div class="hero-copy">
+                    <div class="eyebrow">A closer look at OceanGate</div>
+                    <h2>Good choices<br>start with the details.</h2>
+                    <p>From your first disc to a growing media library. Get to know the formats, compare your options and find useful guidance.</p>
+                    <div class="hero-actions"><a class="btn btn-primary" href="about.html">Meet OceanGate <span aria-hidden="true">→</span></a></div>
+                  </div>
+                  <figure class="hero-photo">
+                    <img src="assets/images/about-workspace.webp" alt="Hands checking an optical drive at an electronics packing workbench" width="1536" height="1024" decoding="async">
+                    <figcaption>A little care. A clearer choice.</figcaption>
+                  </figure>
+                </div>
+              </div>
             </div>
-            <div class="hero-art">
-              <img
-                src="assets/images/hero-neon.svg"
-                alt="Original illustration of optical discs and archival tape media"
-                width="660"
-                height="570"
-                fetchpriority="high"
-              >
-              <div class="art-badge">
-                <strong>09</strong>
-                storage families
-              </div>
-              <div class="art-label">
-                OPTICAL / MAGNETIC / ARCHIVAL
-                <br>
-                BUILT AROUND YOUR REQUIREMENTS
+            <div class="carousel-toolbar">
+              <button class="carousel-arrow" type="button" data-bs-target="#store-carousel" data-bs-slide="prev" aria-label="Previous slide"><span aria-hidden="true">←</span></button>
+              <button class="carousel-arrow" type="button" data-bs-target="#store-carousel" data-bs-slide="next" aria-label="Next slide"><span aria-hidden="true">→</span></button>
+              <span class="carousel-position" id="carousel-position" aria-hidden="true">01 / 03</span>
+              <button class="carousel-toggle" id="carousel-toggle" type="button" aria-label="Pause slideshow" hidden>Ⅱ Pause slides</button>
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#store-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Show optical media slide"></button>
+                <button type="button" data-bs-target="#store-carousel" data-bs-slide-to="1" aria-label="Show archive media slide"></button>
+                <button type="button" data-bs-target="#store-carousel" data-bs-slide-to="2" aria-label="Show OceanGate story slide"></button>
               </div>
             </div>
           </div>
-          <div class="stats-row">
-            <div class="stat">
-              <strong>132</strong>
-              <span>catalogue products</span>
-            </div>
-            <div class="stat">
-              <strong>08</strong>
-              <span>represented brands</span>
-            </div>
-            <div class="stat">
-              <strong>09</strong>
-              <span>storage families</span>
-            </div>
+          <div class="store-perks">
+            <div class="store-perk"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 9 16 3l11 6v14l-11 6-11-6Z M5 9l11 6 11-6 M16 15v14 M10 6l12 6"/></svg><div><strong>Find your format</strong><span>132 products across 9 families</span></div></div>
+            <div class="store-perk"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="5" width="9" height="22" rx="2"/><rect x="19" y="5" width="9" height="22" rx="2"/><path d="m8 16 3 3 5-6m7 3 2 2 4-5"/></svg><div><strong>Compare the details</strong><span>Specifications, side by side</span></div></div>
+            <div class="store-perk"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 18v-3a11 11 0 0 1 22 0v3 M5 17H3v8h6v-8Zm22 0h2v8h-6v-8ZM26 25c0 4-5 5-10 5"/></svg><div><strong>A little help choosing</strong><span>Guides &amp; local support listings</span></div></div>
           </div>
         </div>
       </section>
-      <section class="section">
+      <section class="brand-band" aria-label="Shop by brand"><div class="container">
+        <h2 class="brand-heading">Familiar brands. More choice.</h2><div class="brand-row">
+          <a class="brand-imation" href="brands/brand-imation.html" aria-label="Browse Imation products"><img class="brand-logo brand-imation" src="assets/brand/brand-imation.svg" alt="Imation" width="110" height="36" loading="lazy"></a>
+          <a class="brand-sony" href="brands/brand-sony.html" aria-label="Browse Sony products"><img class="brand-logo brand-sony" src="assets/brand/brand-sony.svg" alt="Sony" width="110" height="36" loading="lazy"></a>
+          <a class="brand-verbatim" href="brands/brand-verbatim.html" aria-label="Browse Verbatim products"><img class="brand-logo brand-verbatim" src="assets/brand/brand-verbatim.svg" alt="Verbatim" width="110" height="36" loading="lazy"></a>
+          <a class="brand-tdk" href="brands/brand-tdk.html" aria-label="Browse TDK products"><img class="brand-logo brand-tdk" src="assets/brand/brand-tdk.svg" alt="TDK" width="110" height="36" loading="lazy"></a>
+          <a class="brand-maxell" href="brands/brand-maxell.html" aria-label="Browse Maxell products"><img class="brand-logo brand-maxell" src="assets/brand/brand-maxell.svg" alt="Maxell" width="110" height="36" loading="lazy"></a>
+          <a class="brand-samsung" href="brands/brand-samsung.html" aria-label="Browse Samsung products"><img class="brand-logo brand-samsung" src="assets/brand/brand-samsung.svg" alt="Samsung" width="110" height="36" loading="lazy"></a>
+          <a class="brand-hp" href="brands/brand-hp.html" aria-label="Browse HP products"><img class="brand-logo brand-hp" src="assets/brand/brand-hp.svg" alt="HP" width="110" height="36" loading="lazy"></a>
+          <a class="brand-quantum" href="brands/brand-quantum.html" aria-label="Browse Quantum products"><img class="brand-logo brand-quantum" src="assets/brand/brand-quantum.svg" alt="Quantum" width="110" height="36" loading="lazy"></a>
+        </div></div></section>
+<section class="section">
         <div class="container">
           <div class="section-head">
             <div>
-              <div class="eyebrow">01 / Find your format</div>
-              <h2>A place for every archive.</h2>
+              <div class="eyebrow">Find your format</div>
+              <h2>Browse by category</h2>
             </div>
             <a class="text-link" href="products.html">Browse all products ↗</a>
           </div>
@@ -157,7 +173,7 @@
             <a href="categories/category-floppy-disks.html" class="category-card">
               <img
                 src="assets/images/imation-3-5-inch-1-44-mb-floppy-disks-10-pack-pc-formatted-og-001.svg"
-                alt="Floppy disks illustration"
+                alt="Floppy disks"
                 width="100"
                 height="100"
                 loading="lazy"
@@ -171,7 +187,7 @@
             <a href="categories/category-compact-disc-media.html" class="category-card">
               <img
                 src="assets/images/imation-cd-r-700-mb-52x-standard-labelled-10-pack-og-013.svg"
-                alt="Compact disc media illustration"
+                alt="Compact disc media"
                 width="100"
                 height="100"
                 loading="lazy"
@@ -185,7 +201,7 @@
             <a href="categories/category-cd-rom-drives.html" class="category-card">
               <img
                 src="assets/images/samsung-24x-cd-rom-drive-pata-ide-og-043.svg"
-                alt="CD-ROM drives illustration"
+                alt="CD-ROM drives"
                 width="100"
                 height="100"
                 loading="lazy"
@@ -199,7 +215,7 @@
             <a href="categories/category-optical-writers.html" class="category-card">
               <img
                 src="assets/images/samsung-24x-cd-writer-pata-ide-og-055.svg"
-                alt="Optical writers illustration"
+                alt="Optical writers"
                 width="100"
                 height="100"
                 loading="lazy"
@@ -213,7 +229,7 @@
             <a href="categories/category-dvd-media.html" class="category-card">
               <img
                 src="assets/images/imation-dvd-r-4-7-gb-16x-forcefield-protective-coating-10-pack-og-067.svg"
-                alt="DVD media illustration"
+                alt="DVD media"
                 width="100"
                 height="100"
                 loading="lazy"
@@ -227,7 +243,7 @@
             <a href="categories/category-data-cartridges.html" class="category-card">
               <img
                 src="assets/images/imation-dds-3-4-mm-data-cartridge-12-gb-og-085.svg"
-                alt="Data cartridges illustration"
+                alt="Data cartridges"
                 width="100"
                 height="100"
                 loading="lazy"
@@ -241,7 +257,7 @@
             <a href="categories/category-ait-tapes.html" class="category-card">
               <img
                 src="assets/images/sony-ait-1-advanced-intelligent-tape-35-gb-og-101.svg"
-                alt="AIT tapes illustration"
+                alt="AIT tapes"
                 width="100"
                 height="100"
                 loading="lazy"
@@ -255,7 +271,7 @@
             <a href="categories/category-data-centre-tapes.html" class="category-card">
               <img
                 src="assets/images/imation-lto-3-data-cartridge-400-gb-og-113.svg"
-                alt="Data centre tapes illustration"
+                alt="Data centre tapes"
                 width="100"
                 height="100"
                 loading="lazy"
@@ -269,7 +285,7 @@
             <a href="categories/category-disc-organisers.html" class="category-card">
               <img
                 src="assets/images/imation-disc-organiser-100-disc-graphite-bundle-og-125.svg"
-                alt="Disc organisers illustration"
+                alt="Disc organisers"
                 width="100"
                 height="100"
                 loading="lazy"
@@ -283,34 +299,22 @@
           </div>
         </div>
       </section>
-      <div class="brand-band">
-        <div class="container brand-row">
-          <span>EXPLORE BY BRAND</span>
-          <a href="brands/brand-imation.html">Imation</a>
-          <a href="brands/brand-sony.html">Sony</a>
-          <a href="brands/brand-verbatim.html">Verbatim</a>
-          <a href="brands/brand-tdk.html">TDK</a>
-          <a href="brands/brand-maxell.html">Maxell</a>
-          <a href="brands/brand-samsung.html">Samsung</a>
-          <a href="brands/brand-hp.html">HP</a>
-          <a href="brands/brand-quantum.html">Quantum</a>
-        </div>
-      </div>
-      <section class="section">
+
+      <section class="section featured-section">
         <div class="container">
           <div class="section-head">
             <div>
-              <div class="eyebrow">02 / A closer look</div>
-              <h2>Discover the collection.</h2>
+              <div class="eyebrow">From the catalogue</div>
+              <h2>A few places to start.</h2>
             </div>
-            <p>Different formats, clearly explained. Start with these selected catalogue examples.</p>
+            <p>Explore a selection of optical media, drives and archival storage.</p>
           </div>
           <div class="product-grid featured-grid">
             <article class="product-card">
               <a class="product-image" href="products/imation-cd-r-700-mb-52x-standard-labelled-10-pack-og-013.html">
                 <img
                   src="assets/images/imation-cd-r-700-mb-52x-standard-labelled-10-pack-og-013.svg"
-                  alt="Illustration of Imation CD-R 700 MB 52x Standard labelled 10-pack; educational sample, not a manufacturer photograph"
+                  alt="Product image of Imation CD-R 700 MB 52x Standard labelled 10-pack"
                   width="600"
                   height="420"
                   loading="lazy"
@@ -318,7 +322,7 @@
               </a>
               <div class="product-content">
                 <div class="product-meta">
-                  <span>Imation</span>
+                  <img class="manufacturer-logo brand-imation" src="assets/brand/brand-imation.svg" alt="Imation" width="110" height="36" loading="lazy">
                   <span>cd r</span>
                 </div>
                 <h3>
@@ -331,7 +335,7 @@
                   <li>Capacity per disc: 700 MB</li>
                 </ul>
                 <div class="product-price">
-                  <small>Demo price · PKR</small>
+                  <small>Price · PKR</small>
                   480
                 </div>
                 <div class="product-actions">
@@ -348,7 +352,7 @@
               <a class="product-image" href="products/imation-dds-3-4-mm-data-cartridge-12-gb-og-085.html">
                 <img
                   src="assets/images/imation-dds-3-4-mm-data-cartridge-12-gb-og-085.svg"
-                  alt="Illustration of Imation DDS-3 4 mm data cartridge 12 GB; educational sample, not a manufacturer photograph"
+                  alt="Product image of Imation DDS-3 4 mm data cartridge 12 GB"
                   width="600"
                   height="420"
                   loading="lazy"
@@ -356,7 +360,7 @@
               </a>
               <div class="product-content">
                 <div class="product-meta">
-                  <span>Imation</span>
+                  <img class="manufacturer-logo brand-imation" src="assets/brand/brand-imation.svg" alt="Imation" width="110" height="36" loading="lazy">
                   <span>dds tape</span>
                 </div>
                 <h3>
@@ -369,7 +373,7 @@
                   <li>Tape width: 4 mm</li>
                 </ul>
                 <div class="product-price">
-                  <small>Demo price · PKR</small>
+                  <small>Price · PKR</small>
                   2,400
                 </div>
                 <div class="product-actions">
@@ -386,7 +390,7 @@
               <a class="product-image" href="products/samsung-24x-cd-rom-drive-pata-ide-og-043.html">
                 <img
                   src="assets/images/samsung-24x-cd-rom-drive-pata-ide-og-043.svg"
-                  alt="Illustration of Samsung 24x CD-ROM drive PATA-IDE; educational sample, not a manufacturer photograph"
+                  alt="Product image of Samsung 24x CD-ROM drive PATA-IDE"
                   width="600"
                   height="420"
                   loading="lazy"
@@ -394,7 +398,7 @@
               </a>
               <div class="product-content">
                 <div class="product-meta">
-                  <span>Samsung</span>
+                  <img class="manufacturer-logo brand-samsung" src="assets/brand/brand-samsung.svg" alt="Samsung" width="110" height="36" loading="lazy">
                   <span>cd rom drive</span>
                 </div>
                 <h3>
@@ -407,7 +411,7 @@
                   <li>Maximum CD read speed: 24x</li>
                 </ul>
                 <div class="product-price">
-                  <small>Demo price · PKR</small>
+                  <small>Price · PKR</small>
                   3,200
                 </div>
                 <div class="product-actions">
@@ -424,7 +428,7 @@
               <a class="product-image" href="products/imation-disc-organiser-100-disc-graphite-bundle-og-125.html">
                 <img
                   src="assets/images/imation-disc-organiser-100-disc-graphite-bundle-og-125.svg"
-                  alt="Illustration of Imation Disc organiser 100-disc Graphite bundle; educational sample, not a manufacturer photograph"
+                  alt="Product image of Imation Disc organiser 100-disc Graphite bundle"
                   width="600"
                   height="420"
                   loading="lazy"
@@ -432,7 +436,7 @@
               </a>
               <div class="product-content">
                 <div class="product-meta">
-                  <span>Imation</span>
+                  <img class="manufacturer-logo brand-imation" src="assets/brand/brand-imation.svg" alt="Imation" width="110" height="36" loading="lazy">
                   <span>disc organiser</span>
                 </div>
                 <h3>
@@ -445,7 +449,7 @@
                   <li>Carousel units: 1 units</li>
                 </ul>
                 <div class="product-price">
-                  <small>Demo price · PKR</small>
+                  <small>Price · PKR</small>
                   28,500
                 </div>
                 <div class="product-actions">
@@ -488,52 +492,20 @@
           </div>
         </div>
       </section>
-      <section class="section">
-        <div class="container">
-          <div class="support-banner">
-            <div>
-              <div class="eyebrow">Every format has a story</div>
-              <h2>
-                Find the right fit.
-                <br>
-                Keep the important things.
-              </h2>
-              <p>Our compatibility guide is a good place to start.</p>
-            </div>
-            <div class="hero-actions">
-              <a href="support.html" class="btn btn-primary">Visit support ↗</a>
-              <a href="where-to-buy.html" class="btn btn-outline">Where to buy</a>
-            </div>
+      <section class="section" aria-labelledby="home-story-title">
+        <div class="container"><div class="story-banner">
+          <img src="assets/images/about-workspace.webp" alt="An optical drive being checked and packed at an electronics workbench" width="1536" height="1024" loading="lazy">
+          <div class="story-banner-copy"><div class="eyebrow">Behind the collection</div>
+            <h2 id="home-story-title">A little more care.<br>A lot more clarity.</h2>
+            <p>Choosing storage starts with knowing what fits. We've brought the formats, specifications and useful next steps together, so you can make sense of your options.</p>
+            <a class="text-link" href="about.html">Get to know OceanGate →</a>
           </div>
-        </div>
+        </div></div>
       </section>
-      <section class="section">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">A useful perspective</div>
-              <h2>Clarity makes a difference.</h2>
-            </div>
-            <span class="sample-label">Illustrative feedback · sample testimonials</span>
-          </div>
-          <div class="testimonials">
-            <blockquote class="quote">
-              <p>“Seeing the tape generation beside its native capacity makes compatibility checks much clearer.”</p>
-              <footer>Sample archive manager</footer>
-            </blockquote>
-            <blockquote class="quote">
-              <p>“The comparison view helps me choose a disc format and pack size for each project.”</p>
-              <footer>Sample media librarian</footer>
-            </blockquote>
-            <blockquote class="quote">
-              <p>“Individual specification downloads make it easier to discuss a legacy equipment requirement.”</p>
-              <footer>Sample IT coordinator</footer>
-            </blockquote>
-          </div>
-        </div>
-      </section>
+
+
     </main>
-    <!-- Supporting navigation and transparent educational context. -->
+    <!-- Supporting navigation. -->
     <footer class="site-footer">
       <div class="container">
         <div class="footer-grid">
@@ -555,7 +527,7 @@
             <a href="support.html">Support centres</a>
             <a href="where-to-buy.html">Where to buy</a>
             <a href="contact.html">Get in touch</a>
-            <a href="cart.html">Your demo bag</a>
+            <a href="cart.html">Your cart</a>
           </div>
           <div class="footer-col">
             <h3>Make an informed choice</h3>
@@ -564,9 +536,9 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <span>OceanGate Limited · Educational eProject</span>
-          <span>Illustrative products &amp; sample listings. No orders or payments.</span>
-          <span>BLACK / NEON EDITION</span>
+          <span>OceanGate Limited</span>
+          <span>Storage media, drives &amp; product support.</span>
+          <span>OPTICAL MEDIA &amp; ARCHIVAL STORAGE</span>
         </div>
       </div>
     </footer>
@@ -574,7 +546,7 @@
     <noscript>
       <div class="notice container">
         Product information and downloads are available. Enable JavaScript for search, comparison and the
-        demo bag.
+        cart.
       </div>
     </noscript>
   </body>
