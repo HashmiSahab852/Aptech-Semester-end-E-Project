@@ -79,7 +79,7 @@
       node('p',
         {
           class: 'demo-note',
-          text: 'Contact placeholders are part of this educational project. Replace them before launch.'
+          text: 'Check the contact details above before sending your enquiry.'
         }));
     renderMap();
     $('#contact-form')?.addEventListener('submit', event => {

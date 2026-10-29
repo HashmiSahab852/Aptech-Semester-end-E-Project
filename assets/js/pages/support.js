@@ -1,4 +1,4 @@
-/* support.html: search and filter the sample support centres. */
+/* support.html: search and filter the support centres. */
 (() => {
   'use strict';
 

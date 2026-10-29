@@ -68,7 +68,7 @@
         }),
       node('p',
         {
-          text: `${brandName(product.brand)} · ${money(product.price)} demo price`
+          text: `${brandName(product.brand)} · ${money(product.price)}`
         }),
       link('View details',
         productPath(product)),
@@ -131,7 +131,7 @@
     const names = [...new Set(products.flatMap(product => product.specifications.map(spec => spec.name)))];
     const rows = [['Brand',
         ...products.map(product => brandName(product.brand))],
-      ['Demo price',
+      ['Price',
         ...products.map(product => money(product.price))],
       ...names.map(name => [name,
           ...products.map(product => product.specifications.find(spec => spec.name === name)?.value || 'Not provided')]),
@@ -162,7 +162,7 @@
       },
       [node('caption',
           {
-            text: `${typeLabel(products[0].comparisonType)} comparison · Educational specifications`
+            text: `${typeLabel(products[0].comparisonType)} comparison · Specifications`
           }),
         node('thead',
           {},

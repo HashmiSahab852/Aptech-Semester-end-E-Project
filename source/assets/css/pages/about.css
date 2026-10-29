@@ -1,46 +1,98 @@
-/* About page: company story and information cards. */
-
-.prose {
-  max-width: 800px;
-}
-
-.prose h2 {
-  font-size: 1.8rem;
-  margin-top: 40px;
-}
-
-.prose p {
-  font-size: .95rem;
-}
-
-.info-grid {
+/* About: editorial photography, a concise story and practical next steps. */
+.about-intro {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: 1fr 1.08fr;
+  align-items: center;
+  gap: clamp(36px, 5vw, 72px);
+  padding-top: 28px;
+  padding-bottom: 76px;
 }
-
-.info-card {
-  padding: 28px;
-  border: 1px solid var(--line);
-  background: var(--panel);
+.about-intro-copy { padding-block: 24px; }
+.about-intro h1 {
+  font-size: clamp(2.7rem, 4.1vw, 4.15rem);
+  line-height: 1.08;
+  letter-spacing: -.055em;
+  margin-bottom: 25px;
 }
-
-.info-card p {
-  font-size: .84rem;
+.about-intro h1 span { color: var(--accent); }
+.about-intro-copy > p { max-width: 470px; font-size: .95rem; line-height: 1.85; }
+.about-intro-copy .about-lead { font-size: 1.1rem; line-height: 1.7; color: var(--text); }
+.about-intro .btn { margin-top: 14px; }
+.about-intro-note {
+  color: var(--muted);
+  font-size: .69rem;
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
 }
-
-.info-card a {
-  overflow-wrap: anywhere;
+.about-intro-note span { color: var(--muted); }
+.about-main-photo, .about-detail-photo { margin: 0; min-width: 0; }
+.about-main-photo img {
+  display: block;
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px;
 }
-
+.about-main-photo figcaption {
+  font-size: .66rem;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 13px;
+  line-height: 1.6;
+}
+.about-main-photo figcaption span { color: var(--muted); }
+.about-story { background: var(--panel); padding-block: 70px; }
+.about-story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(35px, 6vw, 88px); align-items: center; }
+.about-detail-photo img { display: block; width: 100%; height: 350px; object-fit: cover; border-radius: 4px; }
+.about-story h2 { font-size: clamp(2rem, 3vw, 2.8rem); line-height: 1.15; margin-bottom: 24px; }
+.about-story p { font-size: .92rem; line-height: 1.85; }
+.about-story .text-link { margin-top: 12px; }
+.about-approach { padding-top: 80px; padding-bottom: 58px; }
+.about-section-heading { display: flex; justify-content: space-between; gap: 35px; align-items: end; margin-bottom: 35px; }
+.about-section-heading h2 { font-size: clamp(1.9rem, 2.7vw, 2.6rem); max-width: 600px; margin: 0; }
+.about-section-heading p { max-width: 300px; font-size: .9rem; margin: 0; }
+.about-service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px; }
+.about-service { padding-top: 25px; border-top: 1px solid var(--line); }
+.about-service-label { display: block; margin-bottom: 20px; color: var(--accent); font-size: .7rem; letter-spacing: .04em; }
+.about-service h3 { font-size: 1.2rem; letter-spacing: -.025em; margin-bottom: 13px; }
+.about-service p { font-size: .85rem; line-height: 1.8; max-width: 355px; }
+.about-service a { display: inline-flex; gap: 15px; align-items: center; margin-top: 8px; font-weight: 600; font-size: .79rem; }
+.about-service a span { color: var(--accent); }
+.about-project-note { padding-top: 24px; padding-bottom: 16px; }
+.about-project-note p { max-width: 1000px; font-size: .72rem; line-height: 1.85; color: var(--muted); }
+.about-project-note strong { color: var(--text); font-weight: 600; }
+@media (max-width: 1000px) {
+  .about-intro { gap: 30px; }
+  .about-intro h1 { font-size: 3rem; }
+  .about-main-photo img { height: 450px; }
+  .about-story-grid { gap: 40px; }
+}
 @media (max-width: 800px) {
-  .info-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .about-intro { grid-template-columns: 1fr; gap: 20px; padding-top: 6px; padding-bottom: 48px; }
+  .about-intro-copy { padding-block: 10px; }
+  .about-intro h1 { font-size: clamp(2.5rem, 6vw, 3.6rem); }
+  .about-intro-copy > p { max-width: 600px; }
+  .about-main-photo img { height: auto; aspect-ratio: 3 / 2; }
+  .about-story { padding-block: 42px; }
+  .about-story-grid { grid-template-columns: 1fr; gap: 32px; }
+  .about-detail-photo img { height: auto; aspect-ratio: 16 / 9; }
+  .about-approach { padding-top: 48px; padding-bottom: 28px; }
+  .about-section-heading { display: block; }
+  .about-section-heading p { max-width: 500px; margin-top: 15px; }
+  .about-service-grid { grid-template-columns: 1fr; gap: 26px; }
+  .about-service p { max-width: 620px; }
 }
-
 @media (max-width: 480px) {
-  .info-grid {
-    grid-template-columns: 1fr;
-  }
+  .about-intro h1 { font-size: 2.55rem; }
+  .about-intro .about-lead { font-size: 1rem; }
+  .about-intro-note { gap: 7px; font-size: .63rem; }
+  .about-main-photo img { aspect-ratio: 5 / 4; }
+  .about-main-photo figcaption { font-size: .63rem; }
+  .about-detail-photo img { aspect-ratio: 5 / 4; }
 }

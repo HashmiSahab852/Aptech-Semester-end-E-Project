@@ -1,4 +1,4 @@
-/* Cart page: line items, quantity controls, totals and demo checkout. */
+/* Cart page: line items, quantity controls, totals and order review. */
 (() => {
   'use strict';
 
@@ -112,7 +112,7 @@
       },
       [node('h2',
           {
-            text: 'Your demo summary'
+            text: 'Order summary'
           }),
         node('dl',
           {},
@@ -136,9 +136,9 @@
               })]),
         node('p',
           {
-            text: 'No tax or delivery charges are added. These are illustrative prices.'
+            text: 'Shipping and product availability are confirmed on enquiry.'
           }),
-        actionButton('Demo Checkout',
+        actionButton('Review order',
           'cart-checkout',
           '',
           'btn btn-primary'),
@@ -151,7 +151,7 @@
         node('p',
           {
             class: 'demo-note',
-            text: 'This cart is a demonstration. Nothing is submitted, saved or charged.'
+            text: 'Check your quantities and specifications before sending a product enquiry.'
           })]);
     target.replaceChildren(node('div', { class: 'cart-layout' }, [items, summary]));
   }
@@ -166,11 +166,11 @@
       [node('h2',
           {
             id: 'checkout-title',
-            text: 'Demo checkout summary'
+            text: 'Review your order'
           }),
         node('p',
           {
-            text: 'This is a preview only. Nothing is submitted, saved or charged. No order has been placed.'
+            text: 'Review your selection, then contact us to confirm availability and delivery details.'
           }),
         node('ul',
           {},
@@ -182,12 +182,13 @@
         node('p',
           {
             class: 'product-price',
-            text: `Demo total: ${money(cartTotals() / 100)}`
+            text: `Subtotal: ${money(cartTotals() / 100)}`
           })]);
     const close = node('button', { type: 'button', class: 'btn btn-primary', text: 'Back to cart' });
     close.addEventListener('click', () => dialog.close());
     dialog.addEventListener('close', () => dialog.remove());
-    dialog.append(close);
+    dialog.append(link('Enquire about these items →', 'contact.html', 'btn btn-primary'), close);
+    close.className = 'btn btn-outline';
     document.body.append(dialog);
     dialog.showModal();
     close.focus();

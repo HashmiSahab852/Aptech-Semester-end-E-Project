@@ -1,4 +1,4 @@
-/* Cart page: line items, quantities, totals and demo checkout dialog. */
+/* Cart page: line items, quantities, totals and order review dialog. */
 
 .cart-layout {
   display: grid;
@@ -137,3 +137,5 @@ dialog::backdrop {
     margin-top: -10px;
   }
 }
+
+.checkout-dialog .btn { margin: 12px 10px 0 0; }

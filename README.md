@@ -1,6 +1,6 @@
 # 🌊 OceanGate Limited — Optical Media & Archival Storage
 > **Aptech Semester-End eProject** | Modern Web Development & XML Data Management  
-> **Theme Palette:** Cyber Black (`#070707`) & Exact Neon Cyan (`#04d9ff`)
+> **Theme Palette:** Original Cyber Black (`#070707`) & Exact Neon Cyan (`#04d9ff`)
 
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -35,19 +35,14 @@ The project comprises **160 complete HTML pages**, **132 catalogued products**, 
 
 ## 🎨 Design & Aesthetic System
 
-The website features an ultramodern, high-tech interface crafted for visual impact and technical clarity:
-
-- **Curated Color Palette**:
-  - **Dominant Base:** Deep Cyber Black (`#070707`) & Carbon Navy (`#0f141c`)
-  - **Accent & Primary:** Exact Neon Cyan (`#04d9ff`) & Vivid Aqua (`#00e5ff`)
-  - **Borders & Surfaces:** Translucent glassmorphic dark containers with subtle cyan borders
-- **Typography & Layout**:
-  - Responsive technical grid layouts with asymmetric hero sections and clean product cards
-  - High-contrast readability meeting modern web accessibility standards
-- **Motion & Accessibility**:
-  - Smooth micro-interactions, subtle hover elevations, and dynamic live state toasts
-  - Native support for `prefers-reduced-motion`
-  - Screen-reader friendly with semantic HTML5 elements, skip navigation (`Skip to content`), and ARIA live status regions (`#site-status`)
+- A photo-led storefront that retains the original black/neon-cyan theme, with cleaner spacing and readable typography.
+- The home hero uses the bundled Bootstrap 5.3.8 carousel with three local WebP photographs, six-second rotation, arrows, indicators, touch gestures and a pause/play button.
+- Keyboard interaction pauses rotation; reduced-motion visitors start with automatic rotation disabled.
+- About uses editorial imagery, a concise company story and practical catalogue/support links.
+- Local manufacturer SVG marks appear in the home brand strip, brand page headers, product cards and product details. Source notes: `assets/brand/BRAND-ASSETS.md`.
+- Editorial images were created with the built-in imagegen tool. Exact prompts and provenance: `assets/images/IMAGE-PROMPTS.md`. Product illustrations remain labelled separately.
+- Existing page/component folders are retained. Active CSS/JS and new image/logo assets are mirrored in `source/assets/`.
+- Home loads the complete local Bootstrap stylesheet for carousel rules; other pages retain their existing used-rule build.
 
 ---
 

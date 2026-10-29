@@ -69,14 +69,13 @@
     const image = productImage(product);
     image.loading = 'eager';
     const info = node('div', { class: 'detail-info' }, [
-        node('p',
-          {
-            class: 'eyebrow',
-            text: `${brandName(product.brand)} / ${typeLabel(product.comparisonType)}`
-          }),
+        node('div', { class: 'eyebrow detail-brand' }, [
+          node('img', { class: `manufacturer-logo brand-${product.brand}`, src: localPath(`assets/brand/brand-${product.brand}.svg`), alt: brandName(product.brand), width: 110, height: 36, loading: 'lazy' }),
+          node('span', { text: typeLabel(product.comparisonType) })
+        ]),
         node('h1', { text: product.name }), node('p', { class: 'lead', text: product.description }),
-        node('p', { class: 'model', text: `Demo SKU: ${product.model}` }),
-        node('p', { class: 'product-price', text: `${money(product.price)} · Demo price` }),
+        node('p', { class: 'model', text: `SKU: ${product.model}` }),
+        node('p', { class: 'product-price', text: `${money(product.price)}` }),
         node('ul',
           {
             class: 'detail-features'
@@ -103,11 +102,6 @@
                 class: 'btn btn-outline',
                 text: 'Download specifications .docx'
               })]),
-        node('p',
-          {
-            class: 'demo-note',
-            text: 'Educational catalogue sample. Specifications, prices and illustrations are demonstrative and are not manufacturer-verified offers.'
-          }),
         node('p',
           {
             class: 'context-links'
@@ -150,24 +144,7 @@
                   {
                     text: useCase
                   }))),
-            link('Get product support →',
-              'support.html'),
-            node('h3',
-              {
-                text: 'Sample customer notes'
-              }),
-            ...product.reviews.map(review => node('blockquote',
-                {
-                  class: 'sample-review'
-                },
-                [node('p',
-                    {
-                      text: review.text
-                    }),
-                  node('cite',
-                    {
-                      text: `${review.author} · Illustrative review`
-                    })]))])
+            link('Get product support →', 'support.html')])
       ]);
     target.replaceChildren(node('div',
         {
@@ -181,7 +158,7 @@
               node('p',
                 {
                   class: 'image-caption',
-                  text: 'Product illustration'
+                  text: product.name
                 })]),
           info]),
       lower);
